@@ -20,7 +20,7 @@ from telegram.ext import (
     filters,
 )
 import pytz
-from halls import HallManager
+from halls.hall_manager import HallManager
 from maps import MapManager
 import cairosvg  # For converting SVG to PNG
 import telegram

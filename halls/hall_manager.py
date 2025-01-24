@@ -158,7 +158,7 @@ class HallManager:
         
         # Add neighboring publishers if requested
         if include_neighbors:
-            neighbors = self.find_neighboring_publishers(publisher)
+            neighbors = self.find_neighboring_publishers(publisher.get('hall'), publisher)
             if neighbors:
                 info.append("\n🏪 *الأجنحة المجاورة:*")
                 for neighbor in neighbors:
