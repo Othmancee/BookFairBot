@@ -42,8 +42,10 @@ logger = logging.getLogger(__name__)
 class MetricsCollector:
     def __init__(self):
         self.metrics = defaultdict(list)
-        self.dashboard_path = "data/dashboard"
+        # Get absolute path for dashboard
+        self.dashboard_path = os.path.abspath("data/dashboard")
         Path(self.dashboard_path).mkdir(exist_ok=True)
+        logger.info(f"Dashboard will be available at: {os.path.join(self.dashboard_path, 'dashboard.html')}")
         
     def record_metric(self, metric_name, value):
         timestamp = datetime.now()
@@ -70,12 +72,12 @@ class MetricsCollector:
             
             dashboard_html.append("</body></html>")
             
-            # Save dashboard
+            # Save dashboard with absolute path
             dashboard_file = os.path.join(self.dashboard_path, "dashboard.html")
             with open(dashboard_file, "w") as f:
                 f.write("\n".join(dashboard_html))
                 
-            logger.info(f"Dashboard updated at {dashboard_file}")
+            logger.info(f"Dashboard updated at: {os.path.abspath(dashboard_file)}")
         except Exception as e:
             logger.error(f"Failed to generate dashboard: {e}")
 
