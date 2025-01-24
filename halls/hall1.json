@@ -1,0 +1,426 @@
+{"publishers": [
+    {"code":"A1","nameAr":"دار الكتاب المقدس","nameEn":"Dar El Kitab El Mokaddas","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":1070,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"A2","nameAr":"دار الكتاب المصري اللبناني","nameEn":"Dar Elketab Elmasry Ellebnany","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":20,"y":930,"width":30,"height":120},"width":30,"height":120,"color":"#f7931b","is_rectangle":false}
+,
+    {"code":"A3","nameAr":"دار هلا للنشر و التوزيع","nameEn":"Dar Hala Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":1010,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"A4","nameAr":"دار الشاهد للنشر والتوزيع","nameEn":"Dar El Shahed Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":1010,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A5","nameAr":"مطرانية كرسي دمياط وكفر الشيخ ودير القديسة دميانة للأقباط الأرثوذكس","nameEn":"Matranyet Korsi Domyat We Kafr El Sheikh We Deir El Kadisa Demyana Lel Akbat El Orthodoks","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":200,"y":980,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A6","nameAr":"دار قطوف للنشر و التوزيع","nameEn":"Dar Kotoof Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":980,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A7","nameAr":"شهرزاد للنشر والتوزيع","nameEn":"Shahrazad Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":140,"y":980,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A8","nameAr":"جامعة القاهرة","nameEn":"Gameat El Kahera","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":980,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A9","nameAr":"دار الزيات للنشر والتوزيع","nameEn":"Dar El Zayat Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":920,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A10","nameAr":"حابي للنشر والتوزيع","nameEn":"Haby Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":140,"y":920,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A11","nameAr":"الوهيبي للنشر والتوزيع / فنون للطباعة والنشر والتوزيع","nameEn":"El Wahibi Lel Nashr We El Tawzea / Fonon Lel Tebaa We El Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":920,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A12","nameAr":"مدينة الأدباء للنشر والتوزيع","nameEn":"Madinet El Adabaa Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":200,"y":890,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A13","nameAr":"دار حواديت للنشر","nameEn":"Dar Hawadeet Lel Nashr","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":890,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"A14","nameAr":"شركة ديوان الشرق لإدارة المكتبات","nameEn":"Sherket Diwan El Sharq Le Edaret El Maktabat","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":20,"y":720,"width":30,"height":210},"width":30,"height":210,"color":"#9f5253","is_rectangle":false}
+,
+    {"code":"A15","nameAr":"الصقر للنشر والتوزيع","nameEn":"El Saqr Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":830,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"A16","nameAr":"الكتب خان للنشر والتوزيع","nameEn":"El Kotob Khan Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":830,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A17","nameAr":"فهرس للنشر","nameEn":"Fehres Lel Nashr","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":200,"y":800,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A18","nameAr":"شركة دار الثقافة الجديدة للنشر","nameEn":"Sherket Dar El Thaqafa El Gedida Lel Nashr","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":800,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A19","nameAr":"عيون للطباعة والنشر والتوزيع","nameEn":"Oyoon Lel Tebaa We El Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":140,"y":800,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A20","nameAr":"دار فاروس للطباعة والنشر والتوزيع","nameEn":"Dar Faros Lel Tebaa We El Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":800,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A21","nameAr":"إبهار للنشر والتوزيع","nameEn":"Ibhar Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":740,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"A22","nameAr":"شركة مؤسسة أروقة للدراسات والترجمة والنشر","nameEn":"Sherket Moaseset Oroka Lel Derasat We El Targama We El Nashr","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":200,"y":740,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A23","nameAr":"دار الفرجانى للنشر والتوزيع","nameEn":"Dar El Fergany Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":710,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A24","nameAr":"زحمة كتاب للثقافة والنشر","nameEn":"Zahmet Ketab Lel Thaqafa We El Nashr","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":110,"y":710,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A25","nameAr":"مكتبات دار كتاب","nameEn":"Maktabat Dar Ketab","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":710,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A26","nameAr":"دار الثقافة","nameEn":"Dar El Thaqafa","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":650,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"A27","nameAr":"الشواهين","nameEn":"El Shawahin","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":200,"y":650,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A28","nameAr":"مؤسسة صهيل الأدبية","nameEn":"Moasaset Saheel El Adabya","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":200,"y":620,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A29","nameAr":"تفاصيل","nameEn":"Tafaseel","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":620,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A30","nameAr":"الدار الثقافية للنشر القاهرة","nameEn":"El Dar El Thaqafya Lel Nashr El Kahera","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":140,"y":620,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A31","nameAr":"دار مبدعون للنشر والتوزيع","nameEn":"Dar Mobdeoon Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":620,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A32","nameAr":"مجموعة النيل العربية","nameEn":"Magmoet El Nile El Arabia","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":560,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"A33","nameAr":"دار دريم بوك للنشر والتوزيع","nameEn":"Dar Dream Book Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":560,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"A34","nameAr":"شركة ميثاق للنشر والتوزيع","nameEn":"Sherket Methaq Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":200,"y":530,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A35","nameAr":"كتبنا للمعرفة","nameEn":"Kotobna Lel Maarefa","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":530,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A36","nameAr":"الولاء للنشر والتوزيع","nameEn":"El Walaa Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":140,"y":530,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A37","nameAr":"كنيسة القديس مارمرقص الرسول","nameEn":"Keneset El Kadis Mar Merqos El Rasool","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":530,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A38","nameAr":"دار الرسم بالكلمات للنشر والتوزيع","nameEn":"Dar El Rasm Bel Kalemat Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":20,"y":500,"width":30,"height":150},"width":30,"height":150,"color":"#e1e31c","is_rectangle":false}
+,
+  {"code":"A39","nameAr":"بيت الياسمين للنشر والتوزيع","nameEn":"Beit El Yasmin Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":20,"y":380,"width":30,"height":120},"width":30,"height":120,"color":"#f7931b","is_rectangle":false}
+,
+    {"code":"A40","nameAr":"منشورات إبييدي","nameEn":"Manshorat Ibeedy","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":470,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"A41","nameAr":"الجدول الحي","nameEn":"El Gadwal El Hay","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":470,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A42","nameAr":"حكايات كُتّاب للنشر والتوزيع","nameEn":"Hekayat Kottab Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":200,"y":440,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"A43","nameAr":"دار النشر الاسقفية","nameEn":"Dar El Nashr El Osqufya","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":440,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A44","nameAr":"دار الغد المشرق للنشر والتوزيع","nameEn":"Dar El Ghad El Moshreq Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":140,"y":440,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A45","nameAr":"دار المشرق العربي","nameEn":"Dar El Mashreq El Arabi","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":440,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"A46","nameAr":"عالم الكتب","nameEn":"Aalem El Kotob","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":380,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"A47","nameAr":"مؤسسة قديس أنطونيوس","nameEn":"Moasaset Qedes Antoneos","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":200,"y":380,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A48","nameAr":"مكان برودكشنز","nameEn":"Makan Productions","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":350,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A49","nameAr":"دوائر للنشر والتوزيع","nameEn":"Dawaer Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":140,"y":350,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A50","nameAr":"دار الوليد للنشر والتوزيع","nameEn":"Dar El Walid Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":350,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"A51","nameAr":"دار غريب للنشر والطباعه","nameEn":"Dar Ghareeb Lel Nashr We El Tebaa","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":290,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"A52","nameAr":"الفؤاد للنشر والتوزيع","nameEn":"El Foaad Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":290,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A53","nameAr":"دار تويتة للنشر والتوزيع","nameEn":"Dar Tweeta Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":200,"y":260,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A54","nameAr":"إضاءات للنشر والتوزيع","nameEn":"Edaat Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":260,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A55","nameAr":"دار وعد للنشر والتوزيع","nameEn":"Dar Waad Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":140,"y":260,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A56","nameAr":"دار الإخوة للنشر","nameEn":"Dar El Ekhwa Lel Nashr","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":260,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A57","nameAr":"دار الإسراء للطباعة والنشر والتوزيع والترجمة","nameEn":"Dar El Esraa Lel Tebaa We El Nashr We El Tawzea We El Targama","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":20,"y":250,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":false}
+,
+  {"code":"A58","nameAr":"شركة ميديا بروتك للنشر والتوزيع","nameEn":"Sherket Media Protec Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":20,"y":190,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":false}
+,
+   {"code":"A59","nameAr":"ارتقاء للنشر الدولي والتوزيع","nameEn":"Erteqaa Lel Nashr El Dawly We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":200,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+  {"code":"A60","nameAr":"مكتبة رجب","nameEn":"Maktabet Ragab","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":200,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A61","nameAr":"مبتدأ للنشر والتوزيع","nameEn":"Mobtadaa Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":200,"y":170,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A62","nameAr":"دار بدائل للطبع والنشر والتوزيع","nameEn":"Dar Badael Lel Tebaa We El Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":170,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"A63","nameAr":"دار الفراعنة للنشر والتوزيع","nameEn":"Dar El Faraena Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":140,"y":170,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A64","nameAr":"نماء للبحوث والدراسات","nameEn":"Namaa Lel Bohouth We El Derasat","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":170,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A65","nameAr":"إيبارشية أسيوط للأقباط الأرثوذكس","nameEn":"Ebareeshyet Asyout Lel Akbat El Orthodoks","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":20,"y":160,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"A66","nameAr":"مُفرد للترجمة والنشر","nameEn":"Mofrad Lel Targama We El Nashr","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":20,"y":130,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"A67","nameAr":"دار صفقات كتابية للنشر والتوزيع","nameEn":"Dar Safaqat Ketabya Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":20,"y":100,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"A68","nameAr":"دار صفصافة للنشر","nameEn":"Dar Safsafa Lel Nashr","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":110,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+   {"code":"A69","nameAr":"دار الأحمد للنشر والتوزيع","nameEn":"Dar El Ahmad Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":110,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A70","nameAr":"دار الشرق الأوسط للطبع والنشر","nameEn":"Dar El Sharq El Awsat Lel Tebaa We El Nashr","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":200,"y":80,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A71","nameAr":"أوراق للنشر والتوزيع","nameEn":"Awraq Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":170,"y":80,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A72","nameAr":"دار مجلة مرقس","nameEn":"Dar Magalet Merqos","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":140,"y":80,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"A73","nameAr":"الدار الذهبية","nameEn":"El Dar El Zahabya","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":80,"y":80,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A74","nameAr":"دار النهضة العربية للنشر و التوزيع","nameEn":"Dar El Nahda El Arabia Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":20,"y":10,"width":90,"height":30},"width":90,"height":30,"color":"#e1e31c","is_rectangle":true}
+,
+    {"code":"A75","nameAr":"النخبة العربية للطباعة والنشر والتوزيع","nameEn":"El Nokhba El Arabia Lel Tebaa We El Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"A","position":{"x":110,"y":10,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"B1-","nameAr":"","nameEn":"","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":350,"y":1070,"width":300,"height":30},"width":300,"height":30,"color":"#d3eefc","is_rectangle":true}
+,
+    {"code":"B2-","nameAr":"","nameEn":"","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":1070,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"B1","nameAr":"الهيئة المصرية العامة للكتاب","nameEn":"El HayAa El Masrya El Aama Lel Ketab","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":350,"y":1010,"width":300,"height":30},"width":300,"height":30,"color":"#d3eefc","is_rectangle":true}
+,
+  {"code":"B2","nameAr":"","nameEn":"","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":1010,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"B3-","nameAr":"","nameEn":"","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":980,"width":180,"height":30},"width":180,"height":30,"color":"#5fba45","is_rectangle":true}
+,
+  {"code":"B5","nameAr":"مكتبة الاسكندرية","nameEn":"Maktabet El Eskandrya","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":560,"y":980,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+  {"code":"b4","nameAr":"","nameEn":"","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":440,"y":980,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+   {"code":"B3","nameAr":"","nameEn":"","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":920,"width":180,"height":30},"width":180,"height":30,"color":"#5fba45","is_rectangle":true}
+,
+{"code":"B6","nameAr":"","nameEn":"","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":440,"y":920,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B7","nameAr":"المركز القومي للمسرح والموسيقي والفنون الشعبية","nameEn":"El Markaz El Qawmy Lel Masrah We El Moseqa We El Fonon El Shaabya","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":470,"y":920,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B8","nameAr":"اتحاد الناشرين العرب","nameEn":"Etihad El Nasheren El Arab","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":620,"y":920,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B9","nameAr":"الدار المصرية اللبنانية","nameEn":"El Dar El Masrya El Lebnanya","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":890,"width":390,"height":30},"width":390,"height":30,"color":"#4276ba","is_rectangle":true}
+,
+    {"code":"B10","nameAr":"دار تواصل للطبع والنشر والتوزيع","nameEn":"Dar Tawasol Lel Tebaa We El Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":590,"y":830,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"B11","nameAr":"الرواق للنشر والتوزيع","nameEn":"El Rewaq Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":830,"width":330,"height":30},"width":330,"height":30,"color":"#95ceb3","is_rectangle":true}
+,
+    {"code":"B12","nameAr":"جلوري للنشر والترجمة","nameEn":"Glory Lel Nashr We El Targama","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":800,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"B13","nameAr":"مكتب دار مختلف للنشر والتوزيع","nameEn":"Maktab Dar Mokhtalef Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":320,"y":800,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B14","nameAr":"انسباير للنشر والتوزيع","nameEn":"Inspire Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":350,"y":800,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"B15","nameAr":"دار تنوين للنشر والتوزيع","nameEn":"Dar Tanween Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":380,"y":800,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"B16","nameAr":"مكتبة زهران للنشر والتوزيع","nameEn":"Maktabet Zahran Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":470,"y":800,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"B17","nameAr":"الكنزي للنشر والتوزيع","nameEn":"El Kenzy Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":530,"y":800,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"B18","nameAr":"شركة ناس للطباعه","nameEn":"Sherket Nas Lel Tebaa","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":590,"y":740,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"B19","nameAr":"لوتس للنشر والتوزيع","nameEn":"Lotus Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":560,"y":740,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B20","nameAr":"دار ميم للنشروالتوزيع","nameEn":"Dar Meem Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":530,"y":740,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"B21","nameAr":"زين للنشر والتوزيع","nameEn":"Zain Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":470,"y":740,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"B22","nameAr":"دار ديير للنشر والتوزيع / دار مصر العربية للنشر والتوزيع","nameEn":"Dar Deir Lel Nashr We El Tawzea / Dar Masr El Arabia Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":740,"width":180,"height":30},"width":180,"height":30,"color":"#5fba45","is_rectangle":true}
+,
+   {"code":"B23","nameAr":"الكرمة للنشر","nameEn":"El Karma Lel Nashr","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":710,"width":390,"height":30},"width":390,"height":30,"color":"#4276ba","is_rectangle":true}
+,
+    {"code":"B24","nameAr":"دار غراب للنشر والتوزيع","nameEn":"Dar Ghorab Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":650,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+   {"code":"B25","nameAr":"نفرتيتي للنشر","nameEn":"Nefertiti Lel Nashr","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":350,"y":650,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"B26","nameAr":"مكتبة المرسال للنشر والتوزيع والترجمة","nameEn":"Maktabet El Mersal Lel Nashr We El Tawzea We El Targama","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":380,"y":650,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B27","nameAr":"دار كليوباترا للنشر والتوزيع","nameEn":"Dar Cleopatra Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":410,"y":650,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"B28","nameAr":"دار اقلام عربية للنشر والتوزيع","nameEn":"Dar Aqlam Arabia Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":470,"y":650,"width":180,"height":30},"width":180,"height":30,"color":"#5fba45","is_rectangle":true}
+,
+    {"code":"B29","nameAr":"دار الشروق للنشر","nameEn":"Dar El Shoroq Lel Nashr","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":620,"width":390,"height":30},"width":390,"height":30,"color":"#4276ba","is_rectangle":true}
+,
+  {"code":"B30","nameAr":"دار الكتاب العربي","nameEn":"Dar El Ketab El Arabi","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":410,"y":560,"width":240,"height":30},"width":240,"height":30,"color":"#684fa0","is_rectangle":true}
+,
+    {"code":"B31","nameAr":"يورك للنشر والتوزيع","nameEn":"York Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":350,"y":560,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"B32","nameAr":"دار العنقاء","nameEn":"Dar El Ankaa","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":320,"y":560,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"B33","nameAr":"دار ليدرز للنشر والتوزيع","nameEn":"Dar Leaders Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":560,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"B34","nameAr":"دار الفاروق للأستثمارات الثقافية","nameEn":"Dar El Farouk Lel Istethmarat El Thaqafya","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":530,"width":390,"height":30},"width":390,"height":30,"color":"#4276ba","is_rectangle":true}
+,
+  {"code":"B35","nameAr":"مركز المحروسة للنشر والخدمات الصحفية والمعلومات","nameEn":"Markaz El Mahrosa Lel Nashr We El Khadamat El Sohufya We El Malomat","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":470,"width":240,"height":30},"width":240,"height":30,"color":"#684fa0","is_rectangle":true}
+,
+    {"code":"B36","nameAr":"مزيج للنشر والتوزيع","nameEn":"Mazeej Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":500,"y":470,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B37","nameAr":"الكاف للنشر والترجمة","nameEn":"El Kaf Lel Nashr We El Targama","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":530,"y":470,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B38","nameAr":"مدارات للأبحاث والنشر","nameEn":"Madarat Lel Abhath We El Nashr","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":560,"y":470,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+   {"code":"B39","nameAr":"منشورات الربيع","nameEn":"Manshorat El Rabeea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":500,"y":440,"width":150,"height":30},"width":150,"height":30,"color":"#e1e31c","is_rectangle":true}
+,
+   {"code":"B40","nameAr":"دار القيروان للنشر والتوزيع / دار الندى للاستثمار الثقافي","nameEn":"Dar El Qairawan Lel Nashr We El Tawzea / Dar El Nada Lel Istethmar El Thaqafy","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":410,"y":440,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"B41","nameAr":"دار نادية للنشر والنوزيع","nameEn":"Dar Nadia Lel Nashr We El Tawzee","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":380,"y":440,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"B42","nameAr":"فرست بوك للنشر والتوزيع","nameEn":"First Book Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":440,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"B43","nameAr":"مجموعة بيت الحكمة للصناعات الثقافية","nameEn":"Magmoet Beit El Hekma Lel Senaat El Thaqafya","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":380,"width":390,"height":30},"width":390,"height":30,"color":"#4276ba","is_rectangle":true}
+,
+    {"code":"B44","nameAr":"دار الأمل للنشر والتوزيع","nameEn":"Dar El Amal Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":350,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"B45","nameAr":"الايمان الرسوليه","nameEn":"El Eman El Rasolya","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":380,"y":350,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B46","nameAr":"الحسيني للنشر والتوزيع","nameEn":"El Huseiny Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":410,"y":350,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"B47","nameAr":"دار المصرية السودانية الإماراتية","nameEn":"Dar El Masrya El Sodanya El Emaratya","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":470,"y":350,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B48","nameAr":"ببلومانيا للنشر والتوزيع","nameEn":"Biblomania Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":500,"y":350,"width":150,"height":30},"width":150,"height":30,"color":"#e1e31c","is_rectangle":true}
+,
+    {"code":"B49","nameAr":"دار اكتب","nameEn":"Dar Oktop","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":530,"y":290,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"B50","nameAr":"روافد للنشر والتوزيع","nameEn":"Rawafed Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":470,"y":290,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"B51","nameAr":"مكتبة الثقافة الدينية للنشر والتوزيع مصر","nameEn":"Maktabet El Thaqafa El Denya Lel Nashr We El Tawzea Masr","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":380,"y":290,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"B52","nameAr":"مؤسسة حورس الدولية","nameEn":"Moasaset Horus El Dawlya","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":290,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"B53","nameAr":"عصير الكتب للترجمة والنشر والتوزيع","nameEn":"Aseer El Kotob Lel Targama We El Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":260,"width":390,"height":30},"width":390,"height":30,"color":"#4276ba","is_rectangle":true}
+,
+   {"code":"B54","nameAr":"دار الراية توب للنشر والتوزيع","nameEn":"Dar El Raya Top Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":200,"width":150,"height":30},"width":150,"height":30,"color":"#e1e31c","is_rectangle":true}
+,
+    {"code":"B55","nameAr":"الأدهم للنشر والتوزيع","nameEn":"El Adham Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":410,"y":200,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"B56","nameAr":"الملتقى للنشر والتوزيع","nameEn":"El Moltaqa Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":440,"y":200,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B57","nameAr":"بصمة للنشر والتوزيع","nameEn":"Basma Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":470,"y":200,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B58","nameAr":"العربي للنشر والتوزيع","nameEn":"El Arabi Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":500,"y":200,"width":150,"height":30},"width":150,"height":30,"color":"#e1e31c","is_rectangle":true}
+,
+    {"code":"B59","nameAr":"دار عالم الثقافة للطباعة والنشر والتوزيع","nameEn":"Dar Aalem El Thaqafa Lel Tebaa We El Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":590,"y":170,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"B60","nameAr":"المركز الثقافي الفرنسيسكانى","nameEn":"El Markaz El Thaqafy El Fransiscany","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":560,"y":170,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B61","nameAr":"دانة للطبع والنشر والتوزيع","nameEn":"Dana Lel Tebaa We El Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":530,"y":170,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"B62","nameAr":"سما للنشر والتوزيع","nameEn":"Sama Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":170,"width":240,"height":30},"width":240,"height":30,"color":"#684fa0","is_rectangle":true}
+,
+   {"code":"B63","nameAr":"دار نهضه مصر للنشر","nameEn":"Dar Nahdet Masr Lel Nashr","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":110,"width":390,"height":30},"width":390,"height":30,"color":"#4276ba","is_rectangle":true}
+,
+    {"code":"B64","nameAr":"دار الحلم للنشر والتوزيع","nameEn":"Dar El Helm Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":80,"width":180,"height":30},"width":180,"height":30,"color":"#5fba45","is_rectangle":true}
+,
+    {"code":"B65","nameAr":"مركز الأدب العربي للنشر والتوزيع","nameEn":"Markaz El Adab El Arabi Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":440,"y":80,"width":210,"height":30},"width":210,"height":30,"color":"#9f5253","is_rectangle":true}
+,
+    {"code":"B66","nameAr":"طفرة للنشر والتوزيع","nameEn":"Tafra Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":480,"y":20,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"B67","nameAr":"دار الرائدية المصرية للنشر والطبع والتوزيع","nameEn":"Dar El Raedya El Masrya Lel Nashr We El Tabaa We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":450,"y":20,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B68","nameAr":"فصحي للنشر والتوزيع","nameEn":"Fosha Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":420,"y":20,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"B69","nameAr":"دار المعرفة للنشر والتزويع","nameEn":"Dar El Maarefa Lel Nashr We El Tazwee","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":270,"y":20,"width":150,"height":30},"width":150,"height":30,"color":"#e1e31c","is_rectangle":true}
+,
+  {"code":"C1","nameAr":"اسكرايب للنشر والتوزيع","nameEn":"Escribe Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":710,"y":1070,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+   {"code":"C2","nameAr":"سماوي","nameEn":"Samawy","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":860,"y":870,"width":30,"height":180},"width":30,"height":180,"color":"#5fba45","is_rectangle":false}
+,
+  {"code":"C3","nameAr":"المركز المصرى (إيزى توتريالز)","nameEn":"El Markaz El Masry (Easy Tutorials)","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":740,"y":1010,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"C4","nameAr":"دار الخلود للنشر والتوزيع","nameEn":"Dar El Kholoud Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":1010,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C5","nameAr":"دار الأكويني","nameEn":"Dar El Akweeny","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":980,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C6","nameAr":"كنيسة السيدة العذراء بالزيتون","nameEn":"Keneset El Sayeda El Adraa Bel Zayton","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":710,"y":980,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"C7","nameAr":"البحرينية المصرية للنشر والتوزيع","nameEn":"El Bahrainya El Masrya Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":740,"y":980,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C8","nameAr":"الموسسة الدولية للخدمات الاعلامية","nameEn":"El Moassasa El Dawlya Lel Khedmat El Ealamya","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":770,"y":980,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C9","nameAr":"دار إضافة للنشر والتوزيع","nameEn":"Dar Edafa Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":770,"y":920,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C10","nameAr":"دار حروف منثورة للنشر والتوزيع","nameEn":"Dar Horof Manthora Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":740,"y":920,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"C11","nameAr":"دار سنابل الكتاب","nameEn":"Dar Sanabel El Ketab","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":920,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C12","nameAr":"شركة المستقبل الرقمي","nameEn":"Sherket El Mostaqbal El Raqamy","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":890,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"C13","nameAr":"دار كنوز للنشر و التوزيع","nameEn":"Dar Konoz Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":800,"y":890,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C14","nameAr":"دار النابغة للنشر والتوزيع","nameEn":"Dar El Nabega Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":860,"y":810,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":false}
+,
+  {"code":"C15","nameAr":"دار همسة للنشر","nameEn":"Dar Hamsa Lel Nashr","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":800,"y":830,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"C16","nameAr":"دار مسار للنشر والتوزيع","nameEn":"Dar Masar Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":740,"y":830,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"C17","nameAr":"جسور للنشر والتوزيع","nameEn":"Gosour Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":830,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+{"code":"C18","nameAr":"دار المعرفة الجامعية","nameEn":"Dar El Maarefa El Gameya","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":800,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"C19","nameAr":"المركز القومى للإصدارات القانونية","nameEn":"El Markaz El Qawmy Lel Esdarat El Qanonya","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":770,"y":800,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C20","nameAr":"مركز الدراسات العربية للنشر والتوزيع","nameEn":"Markaz El Derasat El Arabia Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":860,"y":720,"width":30,"height":90},"width":30,"height":90,"color":"#c67cb4","is_rectangle":false}
+,
+    {"code":"C21","nameAr":"دروب المعرفة للنشر والتوزيع","nameEn":"Doroob El Maarefa Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":800,"y":740,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C22","nameAr":"الدار الجامعية","nameEn":"El Dar El Gameya","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":740,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+   {"code":"C23","nameAr":"مركز الكتاب للنشر","nameEn":"Markaz El Ketab Lel Nashr","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":710,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C24","nameAr":"ليفانت لتنمية الموارد البشرية والنشر","nameEn":"Levant Letanmyet El Mawarid El Basharya We El Nashr","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":740,"y":710,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C25","nameAr":"دار فاروس العلمية","nameEn":"Dar Faros El Elmeya","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":770,"y":710,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C26","nameAr":"مركز محمود للاصدارات القانونية","nameEn":"Markaz Mahmoud Lel Esdarat El Qanonya","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":770,"y":650,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C27","nameAr":"دار محمود للنشر والتوزيع","nameEn":"Dar Mahmoud Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":650,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+{"code":"C28","nameAr":"دار العلا للنشر والتوزيع","nameEn":"Dar El Ola Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":620,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C29","nameAr":"دار الكتب والدراسات العربية","nameEn":"Dar El Kotob We El Derasat El Arabia","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":740,"y":620,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"C30","nameAr":"المكتب الجامعي الحديث","nameEn":"El Maktab El Gamey El Hadith","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":860,"y":500,"width":30,"height":150},"width":30,"height":150,"color":"#e1e31c","is_rectangle":false}
+,
+   {"code":"C31","nameAr":"دار الطباعة الحرة","nameEn":"Dar El Tebaa El Hora","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":800,"y":560,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C32","nameAr":"المكتب العربي للمعارف","nameEn":"El Maktab El Arabi Lel Maaref","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":560,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"C33","nameAr":"المركز المصري للدراسات والبحوث العلمية","nameEn":"El Markaz El Masry Lel Derasat We El Bohouth El Elmeya","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":530,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C34","nameAr":"المركز الأكاديمي للطباعة والنشر والتوزيع","nameEn":"El Markaz El Akademy Lel Tebaa We El Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":740,"y":530,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"C35","nameAr":"دار العدالة للنشر والتوزيع","nameEn":"Dar El Adala Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":770,"y":470,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C36","nameAr":"مؤسسة طيبة للنشر والتوزيع","nameEn":"Moassaset Taiba Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":470,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+  {"code":"C37","nameAr":"دار الزهراء للنشر والتوزيع","nameEn":"Dar El Zahraa Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":440,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C38","nameAr":"نيو لينك الدولية للنشر والتدريب","nameEn":"New Link El Dawlya Lel Nashr We El Tadreeb","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":740,"y":440,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C39","nameAr":"الفتح للطباعة والنشر","nameEn":"El Fath Lel Tebaa We El Nashr","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":770,"y":440,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+{"code":"C40","nameAr":"مؤسسة المعرفة لنشر وتوزيع الكتب","nameEn":"Moassaset El Maarefa Lel Nashr We Tawzea El Kotob","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":800,"y":440,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C41","nameAr":"دار الجامعة الجديدة للنشر","nameEn":"Dar El Gamea El Gedida Lel Nashr","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":860,"y":380,"width":30,"height":120},"width":30,"height":120,"color":"#f7931b","is_rectangle":false}
+,
+    {"code":"C42","nameAr":"الشركة العربية المتحدة","nameEn":"El Sherka El Arabia El Motahida","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":800,"y":380,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"C43","nameAr":"المنظمة العربية للتربية والثقافة والعلوم","nameEn":"El Monazama El Arabia Lel Tarbya We El Thaqafa We El Olom","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":380,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"C44","nameAr":"الدولية للكتب العلمية","nameEn":"El Dawlya Lel Kotob El Elmeya","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":350,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C45","nameAr":"دار الأهرامات للإصدارات القانونية / دار الفكر والقانون للنشر والتوزيع","nameEn":"Dar El Ahrramat Lel Esdarat El Qanonya / Dar El Fekr We El Qanon Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":740,"y":350,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+   {"code":"C46","nameAr":"الوكالة العربية للعلاقات العامة","nameEn":"El Wakala El Arabia Lel Elaqat El Ama","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":800,"y":290,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C47","nameAr":"دار التعليم الجامعي","nameEn":"Dar El Taleem El Gamey","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":290,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+   {"code":"C48","nameAr":"المركز الأكاديمي العربي","nameEn":"El Markaz El Akademy El Arabi","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":260,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"C49","nameAr":"الدار العالمية للنشر والتوزيع / فيصل","nameEn":"El Dar El Alamya Lel Nashr We El Tawzea / Faysal","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":740,"y":260,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"C50","nameAr":"دار الوفاء لدنيا الطباعة والنشر","nameEn":"Dar El Wafaa Ledonya El Tebaa We El Nashr","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":860,"y":160,"width":30,"height":150},"width":30,"height":150,"color":"#e1e31c","is_rectangle":false}
+,
+    {"code":"C51","nameAr":"دار الفجر للنشر والتوزيع","nameEn":"Dar El Fajr Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":800,"y":200,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C52","nameAr":"المكتبة العصرية للنشر والتوزيع","nameEn":"El Maktaba El Asrya Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":770,"y":200,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"C53","nameAr":"دار الفكر الجامعي","nameEn":"Dar El Fekr El Gamey","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":200,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+  {"code":"C54","nameAr":"جامعة مصر للعلوم والتكنولوجيا (مركز النشر)","nameEn":"Gameat Masr Lel Olom We El Teknolozya (Markaz El Nashr)","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":170,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"C55","nameAr":"مكتبة مدبولي","nameEn":"Maktabet Madbouly","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":740,"y":170,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"C56","nameAr":"المنظمة العربية للتنمية الإدارية","nameEn":"El Monazama El Arabia Lel Tanmya El Edareya","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":770,"y":170,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C57","nameAr":"المؤسسة الدولية للكتاب","nameEn":"El Moassasa El Dawlya Lel Ketab","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":860,"y":100,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":false}
+,
+  {"code":"C58","nameAr":"دار السحـاب للنشر و التوزيع","nameEn":"Dar El Sahab Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":770,"y":110,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C59","nameAr":"دار المطبوعات الجامعية","nameEn":"Dar El Matboaat El Gameya","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":110,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+   {"code":"C60","nameAr":"دار مصر للنشر والتوزيع","nameEn":"Dar Masr Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":680,"y":80,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"C61","nameAr":"المجموعة العلمية للطبع والنشر","nameEn":"El Magmoaa El Elmeya Lel Tabaa We El Nashr","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":740,"y":80,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"C62","nameAr":"دار حميثرا للنشر والترجمة","nameEn":"Dar Humeithra Lel Nashr We El Targama","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":770,"y":80,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C63","nameAr":"العلم والإيمان للنشر والتوزيع","nameEn":"El Elm We El Eman Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":770,"y":10,"width":120,"height":30},"width":120,"height":30,"color":"#5fba45","is_rectangle":true}
+,
+    {"code":"C63_rect","nameAr":"العلم والإيمان للنشر والتوزيع","nameEn":"El Elm We El Eman Lel Nashr We El Tawzea","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":860,"y":39,"width":30,"height":61},"width":30,"height":61,"color":"#5fba45","is_rectangle":false}
+,
+   {"code":"C64","nameAr":"مجمع اللغة العربية","nameEn":"Magmaa El Logha El Arabia","hall":1,"offers":[],"categories":[],"section":"C","position":{"x":650,"y":10,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+  ]
+}

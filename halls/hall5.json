@@ -1,0 +1,165 @@
+{"publishers": [
+    {"code":"A1","nameAr":"مؤسسة الاهرام","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":440,"y":360,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A2","nameAr":"شركة النيل للنشر و التوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":280,"y":360,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"A3","nameAr":"Egyptian American Book Center","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":220,"y":360,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A4","nameAr":"هيئة الخدمة الروحية للنشر ","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":190,"y":360,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A5","nameAr":"دار المستقبل للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":100,"y":360,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+ {"code":"A6","nameAr":"تكنوفن للوسائل التعليمية ","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":10,"y":360,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+     {"code":"A7","nameAr":"الصفوة لتنمية المهارات","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":10,"y":210,"width":30,"height":90},"width":30,"height":90,"color":"#c67cb4","is_rectangle":true}
+,
+   {"code":"A8","nameAr":"المستقبل للإنتاج التعليمي ","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":10,"y":150,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A9","nameAr":"سمارت كيدز","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":70,"y":160,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A10","nameAr":"سمبا لتسويق وتوزيع الكتب ونشرها","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":70,"y":220,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A11","nameAr":"محطة مصر للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":70,"y":280,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"A12","nameAr":"فلافى بيير للتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":100,"y":220,"width":30,"height":120},"width":30,"height":120,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"A13","nameAr":"دار موهبتي للطبع والنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":100,"y":160,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A14","nameAr":"موسسة طفلي للنشر والتوزيع ","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":160,"y":160,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A15","nameAr":"مؤسسة الجيل المشرق ","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":160,"y":220,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"A16","nameAr":"سهل للنشر وتكنولوجيا المعلومات","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":160,"y":250,"width":30,"height":90},"width":30,"height":90,"color":"#c67cb4","is_rectangle":true}
+,
+   {"code":"A17","nameAr":"العربية للتوريدات المدرسية","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":190,"y":280,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"A18","nameAr":"النور للإنتاج التعليمى .","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":190,"y":220,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A19","nameAr":"المؤسسة الدولية للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":190,"y":160,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A20","nameAr":"جى بى اس للطبع والنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":10,"y":10,"width":190,"height":120},"width":190,"height":120,"color":"#fff100","is_rectangle":true}
+,
+    {"code":"A21","nameAr":"ماى بيبي للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":220,"y":10,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"A22","nameAr":"دار حكايات ","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":250,"y":70,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A23","nameAr":"مؤسسة مون","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":250,"y":100,"width":30,"height":90},"width":30,"height":90,"color":"#c67cb4","is_rectangle":true}
+,
+   {"code":"A24","nameAr":"دار التعليم الجامعي","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":250,"y":220,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A25","nameAr":"دار الصحابه للتراث","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":250,"y":250,"width":30,"height":90},"width":30,"height":90,"color":"#c67cb4","is_rectangle":true}
+,
+   {"code":"A26","nameAr":"شركة أى أم للنشر و التوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":280,"y":220,"width":30,"height":120},"width":30,"height":120,"color":"#f7931b","is_rectangle":true}
+,
+  {"code":"A27","nameAr":"إبتكار و إبداع للنشروالتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":280,"y":130,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A28","nameAr":"دار العزيز للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":280,"y":70,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A29","nameAr":"٨٠ فكرة","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":280,"y":10,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"A30","nameAr":"المؤسسة الدولية للوسائل التعليمية","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":340,"y":70,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"A31","nameAr":"المبتكر الصغير ","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":340,"y":130,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+ {"code":"A32","nameAr":"دار ارتقاء للنشر ","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":340,"y":220,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A33","nameAr":"شركة المجد للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":340,"y":250,"width":30,"height":90},"width":30,"height":90,"color":"#c67cb4","is_rectangle":true}
+,
+   {"code":"A34","nameAr":"ثري دي كمبيوتر سنتر","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":370,"y":220,"width":30,"height":120},"width":30,"height":120,"color":"#f7931b","is_rectangle":true}
+,
+   {"code":"A35","nameAr":"أكاديمية الطفل الجديدة للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":370,"y":100,"width":30,"height":90},"width":30,"height":90,"color":"#c67cb4","is_rectangle":true}
+,
+ {"code":"A36","nameAr":null,"nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":370,"y":70,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A37","nameAr":"كيدز لاند للنشر و التوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":340,"y":10,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+     {"code":"A38","nameAr":"دار نهضه مصر للنشر","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"A","position":{"x":420,"y":20,"width":160,"height":130},"width":160,"height":130,"color":"#0070bb","is_rectangle":true}
+,
+   {"code":"B1","nameAr":"الهيئة المصرية العامة للكتاب","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":500,"y":360,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"B2","nameAr":"دار الفاروق للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":600,"y":360,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"B3","nameAr":"ارچوحة لكتب الأطفال","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":720,"y":360,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+ {"code":"B4","nameAr":"مؤسسة الطفل القارئ للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":780,"y":360,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"B5","nameAr":"بيت الحكمة","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":810,"y":360,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+   {"code":"B6","nameAr":"شركة أبو الهول للنشــر","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":960,"y":270,"width":30,"height":120},"width":30,"height":120,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"B7","nameAr":"دار جنة الأطفال للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":960,"y":240,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"B8","nameAr":"دارمكتبة طيبة للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":960,"y":210,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B9","nameAr":"البرج ميديا للطباعة والنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":960,"y":150,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"B10","nameAr":"بيت الحكمة للاستثمارات الثقافية","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":910,"y":160,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"B11","nameAr":"مؤسسة اليمامة للوسال التعليمية","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":910,"y":220,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"B12","nameAr":"دار زهرة للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":910,"y":250,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"B13","nameAr":"المستقبل للتعليم الإلكتروني والمطبوع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":910,"y":280,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"B14","nameAr":"دار اليوم الأول للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":880,"y":310,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B15","nameAr":"دار كتاب للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":880,"y":280,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"B16","nameAr":"إسكندرية للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":880,"y":220,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"B17","nameAr":"دار الفوائد للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":880,"y":190,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"B18","nameAr":"دار الكتاب المقدس","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":880,"y":160,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B19","nameAr":"كتب شيرين","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":820,"y":160,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B20","nameAr":"اطفال و معلمون للنشر و التوزيغ","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":820,"y":190,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"B21","nameAr":"دار الشروق للنشر","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":820,"y":220,"width":30,"height":120},"width":30,"height":120,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"B22","nameAr":"دار الكوثر للنشر","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":790,"y":280,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"B23","nameAr":"دار جنة الأطفال","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":790,"y":220,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+ {"code":"B24","nameAr":"مكتبات البحر الاحمر","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":790,"y":160,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"B25","nameAr":"المؤسسه العربية الحديثة ","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":800,"y":10,"width":190,"height":120},"width":190,"height":120,"color":"#fff100","is_rectangle":true}
+,
+   {"code":"B26","nameAr":"Academic Bookshop","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":720,"y":10,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"B27","nameAr":"تطوير لتنمية المهارات (ناشرون) ","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":730,"y":70,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"B28","nameAr":"مؤسسة كتابي","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":730,"y":130,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"B29","nameAr":"مكتبة ومضة","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":730,"y":220,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"B30","nameAr":"نسمات لتكنولوجيا المعلومات والنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":730,"y":250,"width":30,"height":90},"width":30,"height":90,"color":"#c67cb4","is_rectangle":true}
+,
+   {"code":"B31","nameAr":"مكتبة الدار العربية للكتاب","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":700,"y":280,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"B32","nameAr":"نيو هورايزون للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":700,"y":220,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"B33","nameAr":"المؤسسة العربية ناشرون وموزعون","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":700,"y":130,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+ {"code":"B34","nameAr":"دار البستاني للنشر والتوزيع ","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":700,"y":70,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"B35","nameAr":"دار رحيق الكتب للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":690,"y":10,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B36","nameAr":"مكتبة عالم الطفل","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":660,"y":10,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"B37","nameAr":"دار الكتاب المصري اللبناني ","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":640,"y":70,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+ {"code":"B38","nameAr":"العالية للنشر والتوزيع والخدمات التعليمية","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":640,"y":130,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"B39","nameAr":"العلم والإيمان للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":640,"y":220,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"B40","nameAr":"كيان لنشر وتوزيع كتب الاطفال","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":640,"y":250,"width":30,"height":90},"width":30,"height":90,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"B41","nameAr":"سندباد للنشر والتوزيع ","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":610,"y":220,"width":30,"height":120},"width":30,"height":120,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"B42","nameAr":"دار البلسم للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":610,"y":130,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"B43","nameAr":"شركه ال جنى للنشر والتوزيع","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":610,"y":70,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"B44","nameAr":"اديوتك للنشر والتوزيع ","nameEn":null,"hall":5,"offers": [], "categories":[],"section":"B","position":{"x":600,"y":10,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+ ]}

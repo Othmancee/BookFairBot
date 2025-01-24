@@ -1,0 +1,441 @@
+{"publishers": [
+    {"code":"A1","nameAr":"المركز التربوى للغه العربيه لدول الخليج","nameEn":"مكتب التربوي العربي لدول الخليج","hall":3,"offers": [], "categories":[],"section":"A","position":{"x":140,"y":1070,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A2","nameAr":"مؤسسة ابن العربي للبحوث والنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":1070,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"A3","nameAr":"دار ابن كثير   للطباعة والنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":20,"y":910,"width":30,"height":120},"width":30,"height":120,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"A4","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":1000,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
+,
+   {"code":"A5","nameAr":"دار ابن حزم للطباعة والنشر والتوزيع ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":970,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+  {"code":"A6","nameAr":"دار الفاروق ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":910,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+     {"code":"A7","nameAr":"منتدى المعارف / encyclomedia","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":110,"y":910,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"A8","nameAr":"مؤسسة الريان للطباعة والنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":110,"y":880,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A9","nameAr":"دار امجاد حنين للنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":880,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A10","nameAr":"دار اليازوري العلمية للنشر والتوزيع ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":20,"y":880,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A11","nameAr":"دار الفيحاء للنشر والتوزيع ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":20,"y":850,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"A12","nameAr":"دار صفحة سبعة للنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":20,"y":820,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"A13","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":820,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A14","nameAr":"الدار الشامية","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":110,"y":820,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A15","nameAr":"بيج بوكس Big Books","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":790,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"A16","nameAr":"اكاديميا انترناشيونال ودار الكتاب العربي  / دار الكتاب   العربي","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":20,"y":730,"width":30,"height":90},"width":30,"height":90,"color":"#c67cb4","is_rectangle":true}
+,
+  {"code":"A17","nameAr":"دار امجد للنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":730,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A18","nameAr":"دار رسلان / دار علاء الدين","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":110,"y":730,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"A19","nameAr":"دار القلم العربي / دار الرفاعي للنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":110,"y":700,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A20","nameAr":"مكتبة عبق المسك","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":700,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A21","nameAr":"دار جامعة الملك سعود للنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":640,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"A22","nameAr":"دار ربيع للنشر والمستلزمات التعليمية / دار ربيع للنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":20,"y":530,"width":30,"height":120},"width":30,"height":120,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"A23","nameAr":"مؤسسة اللبان للنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":610,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"A24","nameAr":"مكتبة بيروت","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":110,"y":610,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"A25","nameAr":"دار التقوى للطباعة والنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":110,"y":550,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"A26","nameAr":"دار الرواد للنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":550,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A27","nameAr":"اتحاد كتّاب وادباء الإمارات","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":520,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A28","nameAr":"شهريار للنشر والترجمة","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":110,"y":520,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A29","nameAr":"شركة دار الشرق العربي ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":20,"y":470,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"A30","nameAr":"دار نينوى للدراسات والنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":460,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A31","nameAr":"مركز البحوث والدراسات الكويتية","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":140,"y":460,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"A32","nameAr":"إرشاد للنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":240,"y":400,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A33","nameAr":"دار ضياء الشام للطباعة والنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":170,"y":430,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A34","nameAr":"دار أصالة","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":430,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+     {"code":"A35","nameAr":"دار الراتب ناشرون","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":20,"y":380,"width":30,"height":90},"width":30,"height":90,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"A36","nameAr":"المركز العربي للأبحاث ودراسة السياسات","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":370,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A37","nameAr":"عناوين بوكس","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":140,"y":370,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A38","nameAr":"مؤسسة عبد العزيز سعود البابطين الثقافية ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":170,"y":370,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"A39","nameAr":"دار الرشاد الحديثة","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":240,"y":340,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A40","nameAr":"المجلة العربية","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":140,"y":340,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"A41","nameAr":"دار يافا","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":110,"y":340,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A42","nameAr":"دار أدب للنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":340,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"A43","nameAr":"دار القلم  / دار الرياحين للنشر و التوزيع ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":20,"y":190,"width":30,"height":120},"width":30,"height":120,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"A44","nameAr":"دار الرافدين للطباعة والنشر ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":280,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"A45","nameAr":"Sameh Publishing","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":170,"y":280,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"A46","nameAr":"منشورات نادي الكتاب / جداول للنشر والترجمة والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":240,"y":190,"width":30,"height":120},"width":30,"height":120,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"A47","nameAr":"دار ابداع للدراسات و النشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":140,"y":250,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"A48","nameAr":"منشورات زين الحقوقية ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":110,"y":250,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A49","nameAr":"مكتبة دار الزمان للنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":250,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"A50","nameAr":"مكتبة الغانم للنشر والتوزيع ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":190,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A51","nameAr":"مكتبة سمير منصور للطباعة والنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":140,"y":190,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"A52","nameAr":"شركة انا المدينة ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":170,"y":190,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A53","nameAr":"دار الكتب العلمية بغداد","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":240,"y":130,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"A54","nameAr":"دار كيوان للطباعة والنشر والتوزيع / ميتافيرس برس للطباعة والنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":140,"y":160,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A55","nameAr":"دار تموزديموزي للطباعة والنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":110,"y":160,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A56","nameAr":"مؤسسة الوراق للنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":160,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"A57","nameAr":"نور حوران للدراسات والنشر والتراث ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":20,"y":100,"width":30,"height":90},"width":30,"height":90,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"A58","nameAr":"مجموعة كلمات","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":100,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A59","nameAr":"منشورات نصوص","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":140,"y":100,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+ {"code":"A60","nameAr":"دار تحقيق الكتاب","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":170,"y":100,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"A61","nameAr":"دار سطور للنشر والتوزيع - العراق ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":240,"y":70,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"A62","nameAr":"دار اللباب","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":140,"y":70,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"A63","nameAr":"دار البشائر الاسلامية","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":80,"y":70,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+ {"code":"A64","nameAr":"المكتبة العصرية للطباعة والنشر والتوزيع لبنان / الدار النموذجية للطباعة والنشر لبنان","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"A","position":{"x":20,"y":10,"width":120,"height":30},"width":120,"height":30,"color":"#5fba45","is_rectangle":true}
+,
+ {"code":"A65","nameAr":"مكتبة الرشد","nameEn":"مكتبه الرشد السعوديه","hall":3,"offers": [], "categories":[],"section":"A","position":{"x":140,"y":10,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"B1","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":610,"y":1070,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B2","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":580,"y":1070,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B3","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":550,"y":1070,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+  {"code":"B4","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":490,"y":1070,"width":60,"height":30},"width":60,"height":30,"color":"#abd7f2","is_rectangle":true}
+,
+    {"code":"B5","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":390,"y":1070,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+   {"code":"B6","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":330,"y":1070,"width":60,"height":30},"width":60,"height":30,"color":"#abd7f2","is_rectangle":true}
+,
+    {"code":"B7","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":270,"y":1070,"width":60,"height":30},"width":60,"height":30,"color":"#abd7f2","is_rectangle":true}
+,
+  {"code":"B8","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":240,"y":970,"width":30,"height":60},"width":30,"height":60,"color":"#abd7f2","is_rectangle":true}
+,
+ {"code":"B9","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":170,"y":970,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B10","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":240,"y":940,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B11","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":240,"y":910,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+   {"code":"B12","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":170,"y":910,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B13","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":170,"y":880,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+  {"code":"B14","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":240,"y":880,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+ {"code":"B15","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":240,"y":850,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+   {"code":"B16","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":240,"y":820,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B17","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":170,"y":820,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+ {"code":"B18","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":170,"y":790,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B19","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":240,"y":790,"width":30,"height":30},"width":30,"height":30,"color":"#009c49","is_rectangle":true}
+,
+ {"code":"B20","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":240,"y":700,"width":30,"height":90},"width":30,"height":90,"color":"#8a8b8e","is_rectangle":true}
+,
+    {"code":"B21","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":170,"y":730,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B22","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":170,"y":700,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+  {"code":"B23","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":170,"y":640,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+ {"code":"B24","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":170,"y":610,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B25","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":170,"y":550,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+  {"code":"B26","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":170,"y":520,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B27","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":240,"y":640,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B28","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":240,"y":610,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B29","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":240,"y":580,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B30","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":240,"y":550,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+     {"code":"B31","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":240,"y":490,"width":30,"height":60},"width":30,"height":60,"color":"#abd7f2","is_rectangle":true}
+,
+    {"code":"B32","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":240,"y":460,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B33","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":280,"y":10,"width":90,"height":30},"width":90,"height":30,"color":"#8a8b8e","is_rectangle":true}
+,
+  {"code":"B34","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":270,"y":70,"width":60,"height":70},"width":60,"height":70,"color":"#a6a736","is_rectangle":true}
+,
+    {"code":"B35","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":270,"y":140,"width":60,"height":50},"width":60,"height":50,"color":"#00a0af","is_rectangle":true}
+,
+    {"code":"B36","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":270,"y":190,"width":60,"height":120},"width":60,"height":120,"color":"#f48a93","is_rectangle":true}
+,
+    {"code":"B37","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":270,"y":340,"width":60,"height":130},"width":60,"height":130,"color":"#ac868e","is_rectangle":true}
+,
+   {"code":"B38","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":270,"y":470,"width":60,"height":120},"width":60,"height":120,"color":"#f48a93","is_rectangle":true}
+,
+    {"code":"B39","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":270,"y":590,"width":60,"height":80},"width":60,"height":80,"color":"#f89b1c","is_rectangle":true}
+,
+    {"code":"B40","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":270,"y":700,"width":60,"height":70},"width":60,"height":70,"color":"#a6a736","is_rectangle":true}
+,
+  {"code":"B41","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":270,"y":770,"width":60,"height":80},"width":60,"height":80,"color":"#f89b1c","is_rectangle":true}
+,
+   {"code":"B42","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":270,"y":850,"width":60,"height":60},"width":60,"height":60,"color":"#faba74","is_rectangle":true}
+,
+  {"code":"B43","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":270,"y":910,"width":60,"height":60},"width":60,"height":60,"color":"#faba74","is_rectangle":true}
+,
+    {"code":"B44","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":270,"y":970,"width":60,"height":60},"width":60,"height":60,"color":"#faba74","is_rectangle":true}
+,
+    {"code":"B45","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":370,"y":910,"width":140,"height":120},"width":140,"height":120,"color":"#b96f30","is_rectangle":true}
+,
+    {"code":"B46","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":370,"y":700,"width":140,"height":210},"width":140,"height":210,"color":"#00acee","is_rectangle":true}
+,
+  {"code":"B47","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":370,"y":550,"width":60,"height":120},"width":60,"height":120,"color":"#f48a93","is_rectangle":true}
+,
+ {"code":"B48","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":370,"y":420,"width":60,"height":130},"width":60,"height":130,"color":"#ac868e","is_rectangle":true}
+,
+    {"code":"B49","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":370,"y":360,"width":60,"height":60},"width":60,"height":60,"color":"#faba74","is_rectangle":true}
+,
+    {"code":"B50","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":370,"y":100,"width":140,"height":210},"width":140,"height":210,"color":"#00acee","is_rectangle":true}
+,
+ {"code":"B51","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":370,"y":70,"width":60,"height":30},"width":60,"height":30,"color":"#b51c4b","is_rectangle":true}
+,
+ {"code":"B52","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":420,"y":70,"width":90,"height":30},"width":90,"height":30,"color":"#8a8b8e","is_rectangle":true}
+,
+    {"code":"B53","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":370,"y":10,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B54","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":400,"y":10,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B55","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":430,"y":10,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+   {"code":"B56","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":460,"y":10,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B57","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":490,"y":10,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+   {"code":"B58","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":520,"y":10,"width":30,"height":30},"width":30,"height":30,"color":"#019c49","is_rectangle":true}
+,
+    {"code":"B59","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":550,"y":70,"width":60,"height":240},"width":60,"height":240,"color":"#acdbc9","is_rectangle":true}
+,
+   {"code":"B60","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":430,"y":360,"width":80,"height":100},"width":80,"height":100,"color":"#ed1c23","is_rectangle":true}
+,
+    {"code":"B61","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":430,"y":460,"width":80,"height":40},"width":80,"height":40,"color":"#fdefae","is_rectangle":true}
+,
+  {"code":"B62","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":550,"y":340,"width":60,"height":150},"width":60,"height":150,"color":"#eb6842","is_rectangle":true}
+,
+  {"code":"B63","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":430,"y":500,"width":80,"height":70},"width":80,"height":70,"color":"#95cfb3","is_rectangle":true}
+,
+   {"code":"B64","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":430,"y":570,"width":80,"height":100},"width":80,"height":100,"color":"#ed1c23","is_rectangle":true}
+,
+ {"code":"B65","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":550,"y":490,"width":60,"height":180},"width":60,"height":180,"color":"#a14598","is_rectangle":true}
+,
+    {"code":"B66","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":550,"y":700,"width":90,"height":130},"width":90,"height":130,"color":"#fff100","is_rectangle":true}
+,
+    {"code":"B67","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":550,"y":830,"width":90,"height":100},"width":90,"height":100,"color":"#eb6842","is_rectangle":true}
+,
+    {"code":"B68","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"B","position":{"x":550,"y":930,"width":100,"height":100},"width":100,"height":100,"color":"#edc852","is_rectangle":true}
+,
+    {"code":"C1","nameAr":"دار كلمات للنشر والتوزيع  / صفحات للدراسات والنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":1070,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C1+","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":1070,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+ {"code":"C2","nameAr":"مركز المجتمعات للطباعة والنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":860,"y":1000,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C3","nameAr":"دار لبنان للطباعة و النشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":800,"y":1000,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+ {"code":"C4","nameAr":"دار اليمامة للطباعة والنشر والتوزيع  / دار نور الصباح للطباعة والنشر والتوزيع / دار إحياء التراث العربي","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":1000,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"C5","nameAr":"المكتبة الحديثة ناشرون / المؤسسة العربية للدراسات والنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":970,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"C6","nameAr":"شركة المطبوعات للتوزيع والنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":970,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+ {"code":"C7","nameAr":"رياض الريس للكتب والنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":860,"y":940,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"C8","nameAr":"دار الأيام للنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":860,"y":880,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C9","nameAr":"دار أثر للنشر والتوزيع ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":910,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C10","nameAr":"Learning and Application Center","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":740,"y":910,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C11","nameAr":"شركة وجوه للنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":910,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C12","nameAr":"دار الآداب للطباعة والنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":640,"y":880,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C13","nameAr":"مؤسسة ابجد للترجمة والنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":640,"y":820,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C14","nameAr":"دار سعاد الصباح للنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":880,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C15","nameAr":"سنونو للنشر بريطانيا","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":880,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C16","nameAr":"دار انكي للنشر والتوزيع ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":800,"y":880,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"C17","nameAr":"دار إيلاف الدولية للنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":860,"y":820,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C18","nameAr":"دار المناهل للطباعة والنشر والتوزيع ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":800,"y":820,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+ {"code":"C19","nameAr":"الدار العربية للعلوم ناشرون","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":820,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+  {"code":"C20","nameAr":"مؤمنون بلا حدود للنشر والتوزيع ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":640,"y":760,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C21","nameAr":"مكتبة حسن العصرية ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":790,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C22","nameAr":"شركة دار المرقاة للنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":740,"y":790,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C23","nameAr":"دار المصورات للنشر ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":790,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C24","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":860,"y":790,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C25","nameAr":"دار الوتد للكتب والمطبوعات","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":860,"y":730,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C26","nameAr":"دار العماد للنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":730,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C27","nameAr":"مكتبة اسطفان ش.م.ل.","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":740,"y":730,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"C28","nameAr":"دار الفكر الجديد للنشر والتوزيع ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":730,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"C29","nameAr":"دار التنوير","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":640,"y":700,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C30","nameAr":"مؤسسة الانتشار العربي","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":700,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C31","nameAr":"دار عقل","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":700,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"C32","nameAr":"دار المؤلف للطباعة و النشر و التوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":800,"y":700,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C33","nameAr":"دار المنهاج القويم للنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":740,"y":640,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+  {"code":"C34","nameAr":"دار ممدوح عدوان للنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":640,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C35","nameAr":"كتارا للنشر ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":610,"y":640,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C36","nameAr":"المستقبل للأبحاث والدراسات المتقدمة","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":610,"y":580,"width":60,"height":60},"width":60,"height":60,"color":"#f7931b","is_rectangle":true}
+,
+   {"code":"C37","nameAr":"دار كنوز المعرفة للنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":610,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C38","nameAr":"مركز حدائق الفكر للثقافة والخدمات","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":610,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C39","nameAr":"PT LEARNING AND APPLICATION CENTER( مركز العلم والعمل للنشر والتوزيع)","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":800,"y":610,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"C40","nameAr":"أمل الجديدة للطباعة والنشر والتوزيع / دار التكوين","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":860,"y":530,"width":30,"height":120},"width":30,"height":120,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"C41","nameAr":"دار الملايين للطباعة والنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":550,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C42","nameAr":"دار الزاوي للطباعه والنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":740,"y":550,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"C43","nameAr":"جمعية المحافظة على القرآن الكريم","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":550,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C44","nameAr":"جامعة نايف العربية للعلوم الأمنية","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":610,"y":520,"width":60,"height":60},"width":60,"height":60,"color":"#f7931b","is_rectangle":true}
+,
+   {"code":"C45","nameAr":"اتحاد الناشرين الليبين","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":520,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C46","nameAr":"منشورات حياة","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":520,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C47","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":800,"y":520,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C48","nameAr":"الجيل الجديد","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":860,"y":470,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C49","nameAr":"مؤسسة الفرسان للنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":460,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+ {"code":"C50","nameAr":"دار روزا للنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":740,"y":460,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C51","nameAr":"دار الجندي للنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":460,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"C52","nameAr":"دار كنز - ناشرون بيروت / دار المالكية","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":610,"y":460,"width":60,"height":60},"width":60,"height":60,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"C53","nameAr":"دار القلم للطباعة والنشر والتوزيع ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":610,"y":340,"width":60,"height":120},"width":60,"height":120,"color":"#684fa0","is_rectangle":true}
+,
+    {"code":"C54","nameAr":"دار العصماء","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":430,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"C55","nameAr":"دار الساقي","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":740,"y":430,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+  {"code":"C56","nameAr":"مجموعة زاد للنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":860,"y":380,"width":30,"height":90},"width":30,"height":90,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"C57","nameAr":"مكتبة خالد بن الوليد للطباعة والنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":370,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C58","nameAr":"دار ورد للنشر والتوزيع","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":740,"y":370,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"C59","nameAr":"جامعة الاميرة نورة بنت عبدالرحمن بالرياض ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":370,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"C60","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":340,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C61","nameAr":"دار النهار - بيروت","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":340,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C62","nameAr":"دار وائل للنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":800,"y":340,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+     {"code":"C63","nameAr":null,"nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":860,"y":190,"width":30,"height":120},"width":30,"height":120,"color":"#f7931b","is_rectangle":true}
+,
+{"code":"C64","nameAr":"دار المنصور للطباعة والنشر والتوزيع  / الفجر الإسلامي","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":740,"y":280,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"C65","nameAr":"المكتبة الشرقية  / دار المجاني ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":680,"y":280,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C66","nameAr":"دار المعرفة للنشر والتوزيع والانتاج الفني ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":610,"y":190,"width":30,"height":120},"width":30,"height":120,"color":"#f7931b","is_rectangle":true}
+,
+    {"code":"C67","nameAr":"مركز نهوض للدراسات والبحوث","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":680,"y":250,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C68","nameAr":"دار زهرة المستقبل للنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":740,"y":250,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C69","nameAr":"شركة دار المشاريع للطباعة والنشر والتوزيع ش.م.م","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":250,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C70","nameAr":"DAR EL CHIMAL INTERNATIONAL","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":190,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C71","nameAr":"عويدات للنشر والطباعة","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":740,"y":190,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+  {"code":"C72","nameAr":"دار الفارابي","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":680,"y":190,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C73","nameAr":"ألف باء تاء ناشرون","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":610,"y":130,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C74","nameAr":"مجمع الأطرش للكتاب المختص LATRACH EDITION ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":680,"y":160,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+    {"code":"C75","nameAr":"دار قطاف الدانية للنشر و التوزيع ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":740,"y":160,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+    {"code":"C76","nameAr":"منشورات المتوسط","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":160,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"C77","nameAr":"Dar El Maaref Bookshop Company Publishers Sarl","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":860,"y":100,"width":30,"height":90},"width":30,"height":90,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"C78","nameAr":"دار أويا لاستيراد الكتب والمراجع العلمية","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":100,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C79","nameAr":"دار الوليد ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":740,"y":100,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
+,
+   {"code":"C80","nameAr":"منشورات الحلبي الحقوقية","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":680,"y":100,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"C81","nameAr":"دار صوفيا للنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":610,"y":70,"width":30,"height":60},"width":30,"height":60,"color":"#58aaa9","is_rectangle":true}
+,
+  {"code":"C82","nameAr":"دار الفكر للطباعة والنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":680,"y":70,"width":90,"height":30},"width":90,"height":30,"color":"#c67cb4","is_rectangle":true}
+,
+    {"code":"C83","nameAr":"دار النفائس للنشر والتوزيع ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":70,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C84","nameAr":"دار الفتح للدراسات والنشر","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":770,"y":10,"width":120,"height":30},"width":120,"height":30,"color":"#5fba45","is_rectangle":true}
+,
+    {"code":"C85","nameAr":"مركز دراسات الوحدة العربية ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":710,"y":10,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+,
+   {"code":"C86","nameAr":"شركة المؤسسة الحديثة للكتاب ","nameEn":null,"hall":3,"offers": [], "categories":[],"section":"C","position":{"x":650,"y":10,"width":60,"height":30},"width":60,"height":30,"color":"#58aaa9","is_rectangle":true}
+]}
