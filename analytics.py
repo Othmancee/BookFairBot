@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 class AnalyticsManager:
     def __init__(self):
-        self.analytics_dir = "/tmp/data/analytics"
+        self.analytics_dir = "data/analytics"
         self.today_file = f"{self.analytics_dir}/{datetime.now().strftime('%Y-%m-%d')}.json"
         self._ensure_dirs()
         self.current_data = self._load_today()
@@ -28,6 +28,9 @@ class AnalyticsManager:
                     # Convert unique_users back to set
                     if "unique_users" in data:
                         data["unique_users"] = set(data["unique_users"])
+                    # Convert returning_users back to set
+                    if "user_retention" in data and "returning_users" in data["user_retention"]:
+                        data["user_retention"]["returning_users"] = set(data["user_retention"]["returning_users"])
                     return data
             except:
                 return self._get_empty_data()
@@ -136,6 +139,12 @@ class AnalyticsManager:
     def track_user_return(self, user_id: int):
         """Track returning users."""
         user_id_str = str(user_id)
+        # Ensure returning_users is a set
+        if not isinstance(self.current_data["user_retention"]["returning_users"], set):
+            self.current_data["user_retention"]["returning_users"] = set(
+                self.current_data["user_retention"]["returning_users"]
+            )
+        
         if user_id_str in self.current_data["unique_users"]:
             self.current_data["user_retention"]["returning_users"].add(user_id_str)
             self.current_data["user_retention"]["total_returns"] += 1

@@ -5,7 +5,7 @@ from pathlib import Path
 
 class FavoritesManager:
     def __init__(self):
-        self.favorites_file = "/tmp/data/favorites.json"
+        self.favorites_file = "data/favorites.json"
         self._ensure_data_dir()
         self._load_favorites()
 

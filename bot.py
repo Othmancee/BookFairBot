@@ -152,51 +152,45 @@ async def show_homepage(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
 # 2. Command Handlers (/start, /help, etc.)
 # ------------------------------------------------------------------------
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Send a message when the command /start is issued."""
-    user = update.effective_user
-    await update.message.reply_text(
-        f'Hi {user.first_name}! Welcome to the Book Fair Bot. 📚\n\n'
-        'I can help you find publishers and navigate the book fair halls.\n'
-        'Use /help to see available commands.'
-    )
-    analytics_manager.log_command('start', update.effective_user.id)
+    """
+    The /start command simply shows the 'home page' using our shared function.
+    """
+    await show_homepage(update, context)
+
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Send a message when the command /help is issued."""
+    """Send help message when the command /help is issued."""
     help_text = (
-        'Available commands:\n\n'
-        '/start - Start the bot\n'
-        '/help - Show this help message\n'
-        '/search - Search for publishers or halls\n'
-        'You can also send me a publisher name or hall number directly!'
+        "*كيف يمكنني مساعدتك؟*\n\n"
+        "الأوامر المتاحة:\n"
+        "• /start - بدء البوت\n"
+        "• /help - عرض المساعدة\n"
+        "• /search - البحث عن ناشر\n"
+        "• /maps - خريطة المعرض\n"
+        "• /events - الفعاليات\n"
+        "• /favorites - المفضلة\n\n"
+        "يمكنك أيضاً كتابة اسم الناشر أو رقم الجناح مباشرة للبحث"
     )
-    await update.message.reply_text(help_text)
-    analytics_manager.log_command('help', update.effective_user.id)
+    await update.message.reply_text(
+        help_text,
+        parse_mode=ParseMode.MARKDOWN
+    )
 
-async def search(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+
+async def search_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handle the /search command."""
-    if not context.args:
-        await update.message.reply_text(
-            'Please provide a search term after /search\n'
-            'Example: /search publisher_name'
-        )
-        return
-
-    query = ' '.join(context.args)
-    results = hall_manager.search(query)
-    
-    if not results:
-        await update.message.reply_text(
-            f'No results found for "{query}". Try another search term.'
-        )
-        return
-
-    response = 'Search results:\n\n'
-    for result in results:
-        response += f'• {result}\n'
-    
-    await update.message.reply_text(response)
-    analytics_manager.log_search(query, update.effective_user.id, len(results))
+    search_text = (
+        "*البحث عن ناشر* 🔍\n\n"
+        "يمكنك البحث عن طريق:\n"
+        "• اسم دار النشر (مثال: دار الشروق)\n"
+        "• رقم الجناح (مثال: B29)\n"
+        "• رقم القاعة (مثال: قاعة 1)\n\n"
+        "اكتب ما تريد البحث عنه..."
+    )
+    await update.message.reply_text(
+        search_text,
+        parse_mode=ParseMode.MARKDOWN
+    )
 
 
 # ------------------------------------------------------------------------
@@ -204,25 +198,69 @@ async def search(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 # ------------------------------------------------------------------------
 @track_performance
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Handle incoming messages."""
-    if not update.message or not update.message.text:
-        return
-
-    text = update.message.text
-    results = hall_manager.search(text)
+    """Handle incoming messages (likely publisher searches)."""
+    start_time = time()
+    text = update.message.text.strip()
+    user_id = update.effective_user.id
+    
+    # Track user return
+    analytics_manager.track_user_return(user_id)
+    
+    # Search for publishers
+    results = hall_manager.search_publishers(text)
+    
+    # Track search with success indicator
+    analytics_manager.track_search(user_id, text, success=bool(results))
     
     if not results:
         await update.message.reply_text(
-            f'No results found for "{text}". Try another search term or use /help to see available commands.'
+            "عذراً، لم أجد أي دار نشر تطابق بحثك. حاول مرة أخرى باستخدام:\n"
+            "• اسم الناشر بالعربية أو الإنجليزية\n"
+            "• كود الجناح (مثال: A74)\n"
+            "• رقم القاعة (مثال: قاعة 1)"
         )
         return
-
-    response = 'Search results:\n\n'
-    for result in results:
-        response += f'• {result}\n'
     
-    await update.message.reply_text(response)
-    analytics_manager.log_search(text, update.effective_user.id, len(results))
+    # Track response time
+    analytics_manager.track_response_time(time() - start_time)
+
+    # If we have multiple results, show them as a list
+    if len(results) > 1:
+        response = "*نتائج البحث:*\n\n"
+        for i, pub in enumerate(results[:6], 1):
+            response += f"{i}. *{pub.get('nameAr', 'بدون اسم')}*\n"
+            response += f"   🏷️ الكود: `{pub.get('code', 'غير متوفر')}`\n"
+            response += f"   🏛 القاعة: {pub.get('hall', 'غير متوفر')}\n\n"
+        
+        # Add prompt for user action
+        response += "*اضغط على زر الناشر المطلوب لعرض التفاصيل* 👇"
+        
+        # Create keyboard with 2 buttons per row
+        keyboard = []
+        row = []
+        for pub in results[:6]:  # Limit to 6 results
+            button = InlineKeyboardButton(
+                f"{pub.get('code', '??')} - {pub.get('nameAr', 'بدون اسم')}",
+                callback_data=f"pub_{pub.get('code', '')}"
+            )
+            row.append(button)
+            if len(row) == 2:
+                keyboard.append(row)
+                row = []
+        if row:
+            keyboard.append(row)
+        
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        
+        await update.message.reply_text(
+            response,
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=reply_markup
+        )
+    else:
+        # Single result, show detailed info
+        publisher = results[0]
+        await handle_publisher_selection(update, context, publisher, is_callback=False)
 
 
 async def handle_publisher_selection(
@@ -742,7 +780,7 @@ def main() -> None:
     # Command Handlers
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help_command))
-    application.add_handler(CommandHandler("search", search))
+    application.add_handler(CommandHandler("search", search_command))
 
     # Message Handler (for user text)
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
@@ -754,7 +792,7 @@ def main() -> None:
     application.add_error_handler(error_handler)
 
     print("Starting bot...")
-    application.run_polling(allowed_updates=Update.ALL_TYPES)
+    application.run_polling()
 
 
 if __name__ == "__main__":

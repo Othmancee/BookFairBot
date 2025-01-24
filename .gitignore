@@ -19,10 +19,19 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-venv/
 
-# Environment variables
+# Virtual Environment
+venv/
+ENV/
+
+# Environment Variables
 .env
+
+# Logs and Data
+logs/
+*.log
+data/
+cache/
 
 # IDE
 .idea/
@@ -32,13 +41,4 @@ venv/
 
 # OS
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Project specific
-data/
-*.log 
+Thumbs.db 
