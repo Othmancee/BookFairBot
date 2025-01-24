@@ -42,9 +42,9 @@ logger = logging.getLogger(__name__)
 class MetricsCollector:
     def __init__(self):
         self.metrics = defaultdict(list)
-        # Get absolute path for dashboard
+        # Get absolute path for dashboard and ensure parent directories exist
         self.dashboard_path = os.path.abspath("data/dashboard")
-        Path(self.dashboard_path).mkdir(exist_ok=True)
+        Path(self.dashboard_path).mkdir(parents=True, exist_ok=True)
         logger.info(f"Dashboard will be available at: {os.path.join(self.dashboard_path, 'dashboard.html')}")
         
     def record_metric(self, metric_name, value):
@@ -92,11 +92,17 @@ class BotDeployment:
         
     def ensure_directories(self):
         """Create necessary directories."""
-        Path("logs").mkdir(exist_ok=True)
-        Path("data").mkdir(exist_ok=True)
-        Path("data/analytics").mkdir(exist_ok=True)
-        Path("data/dashboard").mkdir(exist_ok=True)
-        Path("cache").mkdir(exist_ok=True)
+        # Create all directories with parents
+        directories = [
+            "logs",
+            "data",
+            "data/analytics",
+            "data/dashboard",
+            "cache"
+        ]
+        for directory in directories:
+            Path(directory).mkdir(parents=True, exist_ok=True)
+            logger.info(f"Ensured directory exists: {os.path.abspath(directory)}")
     
     def check_system_resources(self):
         """Check system resources and log warnings if necessary."""
