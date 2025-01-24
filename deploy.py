@@ -8,16 +8,26 @@ import psutil
 import json
 from datetime import datetime
 import signal
+import time
 
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('logs/bot.log'),
-        logging.StreamHandler()
+        logging.StreamHandler()  # Always log to stdout
     ]
 )
+
+# Try to set up file logging, but don't fail if it's not possible
+try:
+    Path("logs").mkdir(exist_ok=True)
+    file_handler = logging.FileHandler('logs/bot.log')
+    file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+    logging.getLogger().addHandler(file_handler)
+except Exception as e:
+    logging.warning(f"Could not set up file logging: {e}")
+
 logger = logging.getLogger(__name__)
 
 class BotDeployment:
