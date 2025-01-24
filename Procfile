@@ -1,1 +1,1 @@
-worker: python deploy.py
+worker: python bot.py

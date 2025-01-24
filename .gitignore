@@ -27,17 +27,29 @@ ENV/
 # Environment Variables
 .env
 
-# Logs and Data
-logs/
-*.log
-data/
-cache/
-
 # IDE
 .idea/
 .vscode/
 *.swp
 *.swo
+
+# Logs
+*.log
+
+# Temporary files
+*.svg
+*.png
+!assets/*.png
+
+# Environment Variables and Secrets
+credentials.json
+google-analytics-credentials.json
+
+# Logs and Data
+logs/
+data/
+cache/
+.pytest_cache/
 
 # OS
 .DS_Store

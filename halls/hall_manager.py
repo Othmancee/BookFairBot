@@ -45,9 +45,8 @@ class HallManager:
         return self.halls.get(hall_number, [])
     
     def get_section_publishers(self, hall_number: int, section: str) -> List[Dict]:
-        """Get all publishers in a specific hall section."""
-        return [p for p in self.get_hall_publishers(hall_number) 
-                if p.get('section') == section]
+        """Get all publishers in a specific section of a hall."""
+        return [p for p in self.get_hall_publishers(hall_number) if p.get('section') == section]
     
     def get_publisher_by_code(self, code: str) -> Optional[Dict]:
         """Find a publisher by their code across all halls."""
@@ -132,6 +131,32 @@ class HallManager:
         # Sort by distance and take the closest ones
         neighbors.sort(key=lambda x: x[0])
         return [pub for _, pub in neighbors[:max_neighbors]]
+
+    def get_adjacent_publishers(self, hall_number: int, section: str, publisher_code: str) -> List[Dict]:
+        """Get publishers adjacent to the given publisher in the same section."""
+        # Get all publishers in the section
+        section_pubs = self.get_section_publishers(hall_number, section)
+        
+        # Find the current publisher's position
+        current_pub = None
+        current_index = -1
+        for i, pub in enumerate(section_pubs):
+            if pub.get('code') == publisher_code:
+                current_pub = pub
+                current_index = i
+                break
+        
+        if current_index == -1:
+            return []
+        
+        # Get adjacent publishers (one before and one after)
+        adjacent = []
+        if current_index > 0:
+            adjacent.append(section_pubs[current_index - 1])
+        if current_index < len(section_pubs) - 1:
+            adjacent.append(section_pubs[current_index + 1])
+        
+        return adjacent
 
     def format_publisher_info(self, publisher: dict, include_neighbors: bool = False) -> str:
         """Format publisher information for display with proper RTL alignment."""

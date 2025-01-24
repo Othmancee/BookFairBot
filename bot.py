@@ -25,9 +25,8 @@ from maps import MapManager
 import cairosvg  # For converting SVG to PNG
 import telegram
 from favorites import FavoritesManager
-from analytics import AnalyticsManager
+from analytics import GA4Manager
 import functools
-import time
 from time import time
 
 # Enable logging
@@ -45,11 +44,21 @@ logger = logging.getLogger(__name__)
 load_dotenv()
 TOKEN: Final = os.getenv('BOT_TOKEN')
 
+# Environment setup
+IS_PRODUCTION = os.getenv('RAILWAY_ENVIRONMENT') == 'production'
+GA4_DEBUG = os.getenv('GA4_DEBUG', 'false').lower() == 'true'
+
 # Initialize managers
 hall_manager = HallManager()
 map_manager = MapManager()
 favorites_manager = FavoritesManager()
-analytics_manager = AnalyticsManager()
+ga4_manager = GA4Manager()  # Initialize without parameters
+
+if not IS_PRODUCTION:
+    logger.warning(
+        "Running in development mode. GA4 events will be logged but not sent to GA4. "
+        "Set RAILWAY_ENVIRONMENT=production to enable GA4 tracking."
+    )
 
 # Add performance monitoring decorator
 def track_performance(func):
@@ -61,21 +70,38 @@ def track_performance(func):
             return result
         finally:
             duration = time() - start_time
+            # Get user_id if available
+            user_id = None
+            if args and isinstance(args[0], Update):
+                user_id = str(args[0].effective_user.id) if args[0].effective_user else None
+            
             if duration > 1.0:  # Log slow operations
                 logger.warning(f"{func.__name__} took {duration:.2f} seconds")
+                if user_id:
+                    ga4_manager.track_performance(
+                        user_id=user_id,
+                        operation=func.__name__,
+                        duration_ms=duration * 1000
+                    )
     return wrapper
 
 async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Log the error and send a message to the user if possible."""
     error = context.error
     
-    # Track error
-    analytics_manager.track_error()
+    # Track error in GA4
+    if isinstance(update, Update):
+        user_id = str(update.effective_user.id) if update.effective_user else "unknown"
+        ga4_manager.track_error(
+            user_id=user_id,
+            error_type=error.__class__.__name__,
+            error_message=str(error)
+        )
     
     # Handle old callback queries silently
     if isinstance(error, telegram.error.BadRequest) and "Query is too old" in str(error):
-        return  # Just ignore old callback queries
-
+        return
+    
     # For other errors, log them and notify the user
     logger.error("Exception while handling an update:", exc_info=error)
     
@@ -98,17 +124,16 @@ async def show_homepage(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     
     # Show intro and logo only if this is a /start command (not a callback)
     if update.message:
+        total_publishers = sum(len(hall_manager.get_hall_publishers(i)) for i in range(1, 6))
         intro_text = (
             "أكبر وأقدم معرض للكتاب في العالم العربي؛ ويقدم آلاف العناوين في مختلف المجالات؛ يجمع مئات دور النشر من مختلف أنحاء العالم \n"
             "📍 موقع المعرض: مركز مصر للمعارض الدولية \n"
             "🏛 عدد القاعات: 5 قاعات \n"
-            "📚 عدد دور النشر: {total_publishers} دار \n".format(
-                total_publishers=sum(len(hall_manager.get_hall_publishers(i)) for i in range(1, 6))
-            )
+            f"📚 عدد دور النشر: {total_publishers} دار \n"
         )
         
         # Send logo with intro text as caption
-        with open("image.png", "rb") as photo:
+        with open("assets/image.png", "rb") as photo:
             await target_message.reply_photo(
                 photo=photo,
                 caption=intro_text,
@@ -199,18 +224,17 @@ async def search_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 @track_performance
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handle incoming messages (likely publisher searches)."""
-    start_time = time()
     text = update.message.text.strip()
-    user_id = update.effective_user.id
+    user_id = str(update.effective_user.id)
     
-    # Track user return
-    analytics_manager.track_user_return(user_id)
-    
-    # Search for publishers
+    # Track search with enhanced parameters
     results = hall_manager.search_publishers(text)
-    
-    # Track search with success indicator
-    analytics_manager.track_search(user_id, text, success=bool(results))
+    ga4_manager.track_search(
+        user_id=user_id,
+        query=text,
+        success=bool(results),
+        results_count=len(results)
+    )
     
     if not results:
         await update.message.reply_text(
@@ -220,48 +244,44 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
             "• رقم القاعة (مثال: قاعة 1)"
         )
         return
-    
-    # Track response time
-    analytics_manager.track_response_time(time() - start_time)
 
     # If we have multiple results, show them as a list
     if len(results) > 1:
-        response = "*نتائج البحث:*\n\n"
-        for i, pub in enumerate(results[:6], 1):
-            response += f"{i}. *{pub.get('nameAr', 'بدون اسم')}*\n"
-            response += f"   🏷️ الكود: `{pub.get('code', 'غير متوفر')}`\n"
-            response += f"   🏛 القاعة: {pub.get('hall', 'غير متوفر')}\n\n"
-        
-        # Add prompt for user action
-        response += "*اضغط على زر الناشر المطلوب لعرض التفاصيل* 👇"
-        
-        # Create keyboard with 2 buttons per row
-        keyboard = []
-        row = []
-        for pub in results[:6]:  # Limit to 6 results
-            button = InlineKeyboardButton(
-                f"{pub.get('code', '??')} - {pub.get('nameAr', 'بدون اسم')}",
-                callback_data=f"pub_{pub.get('code', '')}"
-            )
-            row.append(button)
-            if len(row) == 2:
-                keyboard.append(row)
-                row = []
-        if row:
-            keyboard.append(row)
-        
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        
-        await update.message.reply_text(
-            response,
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=reply_markup
-        )
+        await show_search_results(update, results[:6])  # Limit to 6 results
     else:
         # Single result, show detailed info
-        publisher = results[0]
-        await handle_publisher_selection(update, context, publisher, is_callback=False)
+        await handle_publisher_selection(update, context, results[0], is_callback=False)
 
+async def show_search_results(update: Update, results: List[Dict]) -> None:
+    """Show a list of search results with interactive buttons."""
+    response = "*نتائج البحث:*\n\n"
+    for i, pub in enumerate(results, 1):
+        response += f"{i}. *{pub.get('nameAr', 'بدون اسم')}*\n"
+        response += f"   🏷️ الكود: `{pub.get('code', 'غير متوفر')}`\n"
+        response += f"   🏛 القاعة: {pub.get('hall', 'غير متوفر')}\n\n"
+    
+    response += "*اضغط على زر الناشر المطلوب لعرض التفاصيل* 👇"
+    
+    # Create keyboard with 2 buttons per row
+    keyboard = []
+    row = []
+    for pub in results:
+        button = InlineKeyboardButton(
+            f"{pub.get('code', '??')} - {pub.get('nameAr', 'بدون اسم')}",
+            callback_data=f"pub_{pub.get('code', '')}"
+        )
+        row.append(button)
+        if len(row) == 2:
+            keyboard.append(row)
+            row = []
+    if row:
+        keyboard.append(row)
+    
+    await update.message.reply_text(
+        response,
+        parse_mode=ParseMode.MARKDOWN,
+        reply_markup=InlineKeyboardMarkup(keyboard)
+    )
 
 async def handle_publisher_selection(
     update: Update,
@@ -272,6 +292,16 @@ async def handle_publisher_selection(
     """Handle when a user selects a publisher from the search list."""
     # Get publisher info with enhanced format
     info = hall_manager.format_publisher_info(publisher)
+    
+    # Get adjacent publishers
+    hall_number = publisher['hall']
+    section = publisher.get('section')
+    if section:
+        adjacent_pubs = hall_manager.get_adjacent_publishers(hall_number, section, publisher['code'])
+        if adjacent_pubs:
+            info += "\n\n*الأجنحة المجاورة:* 📍\n"
+            for adj_pub in adjacent_pubs:
+                info += f"• {adj_pub.get('nameAr', 'بدون اسم')} ({adj_pub.get('code', '??')})\n"
     
     # Check if publisher is in favorites
     user_id = update.effective_user.id
@@ -313,22 +343,80 @@ async def handle_publisher_selection(
         )
 
 
-async def handle_search_result(update: Update, context: ContextTypes.DEFAULT_TYPE, publisher: Dict) -> None:
-    """(Optional) Example function that might display a single search result."""
-    info = hall_manager.format_publisher_info(publisher)
-    keyboard = [
-        [
-            InlineKeyboardButton("📍 موقع الناشر", callback_data=f"loc_{publisher['hall']}_{publisher['code']}"),
-            InlineKeyboardButton("📋 القائمة الرئيسية", callback_data="start")
-        ]
-    ]
-    reply_markup = InlineKeyboardMarkup(keyboard)
+# ------------------------------------------------------------------------
+# Helper Functions
+# ------------------------------------------------------------------------
+def create_home_button() -> List[List[InlineKeyboardButton]]:
+    """Create a keyboard row with a home button."""
+    return [[InlineKeyboardButton("عودة للقائمة الرئيسية", callback_data="start")]]
+
+def create_nav_buttons(current: int, total: int) -> List[InlineKeyboardButton]:
+    """Create navigation buttons for halls/sections."""
+    nav_row = []
+    if current > 1:
+        nav_row.append(InlineKeyboardButton("◀️ السابق", callback_data=f"hall_{current - 1}"))
+    if current < total:
+        nav_row.append(InlineKeyboardButton("التالي ▶️", callback_data=f"hall_{current + 1}"))
+    return nav_row
+
+async def safe_delete_message(message: telegram.Message) -> None:
+    """Safely delete a message, ignoring common errors."""
+    try:
+        await message.delete()
+    except telegram.error.BadRequest:
+        pass
+
+async def safe_edit_message(query: telegram.CallbackQuery, text: str, reply_markup: InlineKeyboardMarkup = None):
+    """Safely edit or send a new message if the original is a photo/caption."""
+    try:
+        await query.edit_message_text(
+            text=text,
+            reply_markup=reply_markup,
+            parse_mode=ParseMode.MARKDOWN
+        )
+    except telegram.error.BadRequest as e:
+        if "Message is not modified" in str(e):
+            pass  # The text is identical
+        elif ("Message to edit not found" in str(e)
+              or "There is no text in the message to edit" in str(e)):
+            # The original message is probably media; delete & send a new one
+            await safe_delete_message(query.message)
+            await query.message.reply_text(
+                text=text,
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=reply_markup
+            )
+        else:
+            raise
+
+async def track_feature_engagement(context: ContextTypes.DEFAULT_TYPE, user_id: str, new_feature: str) -> None:
+    """Track feature engagement time and update context."""
+    prev_feature = context.user_data.get('current_feature', 'start')
     
-    await update.message.reply_text(
-        text=info,
-        parse_mode=ParseMode.MARKDOWN,
-        reply_markup=reply_markup
+    # Track navigation between screens
+    ga4_manager.track_navigation(
+        user_id=user_id,
+        from_screen=prev_feature,
+        to_screen=new_feature
     )
+    
+    # Track feature usage
+    if new_feature in ["search", "maps", "favorites", "events"]:
+        ga4_manager.track_feature_use(
+            user_id=user_id,
+            feature=new_feature
+        )
+        context.user_data['current_feature'] = new_feature
+        
+        # Track engagement time
+        if 'feature_start_time' in context.user_data:
+            duration = time() - context.user_data['feature_start_time']
+            ga4_manager.track_user_engagement(
+                user_id=user_id,
+                feature=prev_feature,
+                engagement_time_msec=int(duration * 1000)
+            )
+        context.user_data['feature_start_time'] = time()
 
 
 # ------------------------------------------------------------------------
@@ -337,392 +425,135 @@ async def handle_search_result(update: Update, context: ContextTypes.DEFAULT_TYP
 @track_performance
 async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handle all callback queries from inline keyboards."""
-    start_time = time()
     query = update.callback_query
-    user_id = update.effective_user.id
+    user_id = str(update.effective_user.id)
     await query.answer()
     
-    # Track user return
-    analytics_manager.track_user_return(user_id)
+    # Track feature engagement
+    await track_feature_engagement(context, user_id, query.data)
     
-    # Get previous feature from context if available
-    prev_feature = context.user_data.get('current_feature', 'start')
-    
-    # Track feature usage and navigation flow
-    if query.data in ["search", "maps", "favorites", "events"]:
-        analytics_manager.track_feature_use(query.data)
-        analytics_manager.track_navigation_flow(user_id, prev_feature, query.data)
-        context.user_data['current_feature'] = query.data
-        
-        # Track feature engagement time if we have previous time
-        if 'feature_start_time' in context.user_data:
-            duration = time() - context.user_data['feature_start_time']
-            analytics_manager.track_feature_engagement(user_id, prev_feature, duration)
-        
-        context.user_data['feature_start_time'] = time()
-    
-    # Track hall views
-    elif query.data.startswith("hall_"):
-        hall_number = query.data.split("_")[1]
-        analytics_manager.track_hall_view(hall_number)
-    
-    # Track publisher views
-    elif query.data.startswith("pub_"):
-        publisher_code = query.data.replace("pub_", "")
-        analytics_manager.track_publisher_view(publisher_code)
-    
-    # Track favorite actions
-    elif query.data.startswith("fav_"):
-        code = query.data.replace("fav_", "")
-        is_favorite = code in favorites_manager.get_user_favorites(user_id)
-        analytics_manager.track_favorite_action("removed" if is_favorite else "added")
-    
-    # Track response time
-    analytics_manager.track_response_time(time() - start_time)
-    
-    # Helper: safely edit or send new text if the original message is a photo/caption
-    async def safe_edit_message(text: str, reply_markup: InlineKeyboardMarkup = None):
-        try:
-            await query.edit_message_text(
-                text=text,
-                reply_markup=reply_markup,
-                parse_mode=ParseMode.MARKDOWN
+    try:
+        # Track specific interactions first
+        if query.data.startswith("hall_"):
+            hall_number = int(query.data.split("_")[1])
+            ga4_manager.track_map_interaction(
+                user_id=user_id,
+                hall_number=hall_number,
+                action="view"
             )
-        except telegram.error.BadRequest as e:
-            if "Message is not modified" in str(e):
-                pass  # The text is identical
-            elif ("Message to edit not found" in str(e)
-                  or "There is no text in the message to edit" in str(e)):
-                # The original message is probably media; delete & send a new one
-                try:
-                    await query.message.delete()
-                except telegram.error.BadRequest:
-                    pass
-                await query.message.reply_text(
-                    text=text,
-                    parse_mode=ParseMode.MARKDOWN,
-                    reply_markup=reply_markup
-                )
-            else:
-                raise
-    
-    # --------------------------------------------------------------------
-    # Callback data parsing
-    # --------------------------------------------------------------------
-    if query.data.startswith("pub_"):
-        code = query.data.replace("pub_", "")
-        publisher = hall_manager.get_publisher_by_code(code)
-        if publisher:
-            await handle_publisher_selection(update, context, publisher, is_callback=True)
-        return
-    
-    elif query.data.startswith("loc_"):
-        # Show map with highlighted publisher
-        _, hall_number, code = query.data.split("_")
-        hall_number = int(hall_number)
-        hall_info = map_manager.get_hall_info(hall_number)
         
-        if hall_info:
-            publishers = hall_manager.get_hall_publishers(hall_number)
+        elif query.data.startswith("section_"):
+            _, hall_number, section = query.data.split("_")
+            ga4_manager.track_map_interaction(
+                user_id=user_id,
+                hall_number=int(hall_number),
+                action="section_select",
+                section=section
+            )
+        
+        elif query.data.startswith("pub_"):
+            code = query.data.replace("pub_", "")
             publisher = hall_manager.get_publisher_by_code(code)
-            
-            svg_path = map_manager.save_hall_map(hall_number, publishers, highlight_code=code)
-            if svg_path and publisher:
-                try:
-                    png_path = svg_path.replace(".svg", ".png")
-                    cairosvg.svg2png(url=svg_path, write_to=png_path)
-                    
-                    keyboard = [
-                        [
-                            InlineKeyboardButton("↩️ عودة لتفاصيل الناشر", callback_data=f"pub_{code}"),
-                            InlineKeyboardButton("📋 القائمة الرئيسية", callback_data="start")
-                        ]
-                    ]
-                    reply_markup = InlineKeyboardMarkup(keyboard)
-                    
-                    caption = (
-                        f"*موقع {publisher.get('nameAr', '')}*\n"
-                        f"الكود: `{code}` - قاعة {hall_number}"
-                    )
-                    
-                    try:
-                        await query.message.delete()
-                    except:
-                        pass
-                    
-                    # Send new photo message
-                    with open(png_path, "rb") as photo:
-                        await query.message.reply_photo(
-                            photo=photo,
-                            caption=caption,
-                            parse_mode=ParseMode.MARKDOWN,
-                            reply_markup=reply_markup
-                        )
-                    
-                    os.remove(svg_path)
-                    os.remove(png_path)
-                    return
-                except Exception as e:
-                    print(f"Error generating map: {e}")
+            if publisher:
+                ga4_manager.track_publisher_interaction(
+                    user_id=user_id,
+                    publisher_code=code,
+                    action="view",
+                    publisher_name=publisher.get('nameAr')
+                )
         
-        # Fallback if we cannot show the map
-        text = "عذراً، لا يمكن عرض الموقع حالياً"
-        keyboard = [[InlineKeyboardButton("عودة للقائمة الرئيسية", callback_data="start")]]
-        await safe_edit_message(text, InlineKeyboardMarkup(keyboard))
-        return
-    
-    elif query.data == "search":
-        text = (
-            "*البحث عن ناشر* 🔍\n\n"
-            "اكتب اسم دار النشر أو رقم الجناح"
-        )
-        await safe_edit_message(text)
-        return
-    
-    elif query.data == "maps":
-        text = "*خريطة المعرض* 🗺\n\nاختر القاعة التي تريد عرض خريطتها:"
-        keyboard = []
-        row = []
-        for hall_num in range(1, 6):
-            row.append(InlineKeyboardButton(f"قاعة {hall_num}", callback_data=f"hall_{hall_num}"))
-            if len(row) == 2:
-                keyboard.append(row)
-                row = []
-        if row:
-            keyboard.append(row)
-        
-        keyboard.append([InlineKeyboardButton("عودة للقائمة الرئيسية", callback_data="start")])
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        
-        # Often we delete the old message if it's media
-        try:
-            await query.message.delete()
-        except:
-            pass
-        
-        await query.message.reply_text(
-            text,
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=reply_markup
-        )
-        return
-    
-    elif query.data.startswith("hall_"):
-        hall_number = int(query.data.split("_")[1])
-        hall_info = map_manager.get_hall_info(hall_number)
-        
-        if hall_info:
-            publishers = hall_manager.get_hall_publishers(hall_number)
-            svg_path = map_manager.save_hall_map(hall_number, publishers, highlight_code=None)
-            if svg_path:
-                try:
-                    png_path = svg_path.replace(".svg", ".png")
-                    cairosvg.svg2png(url=svg_path, write_to=png_path)
-                    
-                    keyboard = []
-                    row = []
-                    for section in hall_info["sections"]:
-                        section_pubs = hall_manager.get_section_publishers(hall_number, section)
-                        row.append(InlineKeyboardButton(
-                            f"قسم {section} ({len(section_pubs)})",
-                            callback_data=f"section_{hall_number}_{section}"
-                        ))
-                        if len(row) == 2:
-                            keyboard.append(row)
-                            row = []
-                    if row:
-                        keyboard.append(row)
-                    
-                    nav_row = []
-                    if hall_number > 1:
-                        nav_row.append(InlineKeyboardButton(
-                            "◀️ السابق",
-                            callback_data=f"hall_{hall_number - 1}"
-                        ))
-                    if hall_number < 5:
-                        nav_row.append(InlineKeyboardButton(
-                            "التالي ▶️",
-                            callback_data=f"hall_{hall_number + 1}"
-                        ))
-                    if nav_row:
-                        keyboard.append(nav_row)
-                    
-                    keyboard.append([
-                        InlineKeyboardButton("عودة لقائمة القاعات", callback_data="maps"),
-                        InlineKeyboardButton("القائمة الرئيسية", callback_data="start")
-                    ])
-                    reply_markup = InlineKeyboardMarkup(keyboard)
-                    
-                    caption = (
-                        f"*خريطة {hall_info['name']}* 🗺\n"
-                        f"عدد الناشرين: {len(publishers)}"
-                    )
-                    
-                    try:
-                        await query.message.delete()
-                    except:
-                        pass
-                    
-                    with open(png_path, "rb") as photo:
-                        await query.message.reply_photo(
-                            photo=photo,
-                            caption=caption,
-                            parse_mode=ParseMode.MARKDOWN,
-                            reply_markup=reply_markup
-                        )
-                    
-                    os.remove(svg_path)
-                    os.remove(png_path)
-                    return
-                except Exception as e:
-                    print(f"Error generating map: {e}")
-        
-        # If we get here => fallback
-        text = "عذراً، لا يمكن عرض الخريطة حالياً"
-        keyboard = [[InlineKeyboardButton("عودة للقائمة الرئيسية", callback_data="start")]]
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        
-        try:
-            await query.message.delete()
-        except:
-            pass
-        await query.message.reply_text(
-            text,
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=reply_markup
-        )
-        return
-    
-    elif query.data.startswith("section_"):
-        _, hall_number, section = query.data.split("_")
-        hall_number = int(hall_number)
-        
-        publishers = hall_manager.get_section_publishers(hall_number, section)
-        if publishers:
-            text = f"*ناشرو قسم {section} - قاعة {hall_number}* 📍\n\n"
-            for pub in publishers:
-                text += f"• *{pub['nameAr']}*\n"
-                text += f"  🏷 الكود: `{pub['code']}`\n\n"
-        else:
-            text = (
-                f"*قسم {section} - قاعة {hall_number}* 📍\n\n"
-                "لا يوجد ناشرين في هذا القسم حالياً"
+        elif query.data.startswith("fav_"):
+            code = query.data.replace("fav_", "")
+            is_favorite = code in favorites_manager.get_user_favorites(int(user_id))
+            action = "remove" if is_favorite else "add"
+            ga4_manager.track_bookmark_action(
+                user_id=user_id,
+                publisher_code=code,
+                action=action
             )
         
-        keyboard = [
-            [
-                InlineKeyboardButton(
-                    f"عودة لخريطة قاعة {hall_number}",
-                    callback_data=f"hall_{hall_number}"
-                ),
-                InlineKeyboardButton("القائمة الرئيسية", callback_data="start")
-            ]
-        ]
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        
-        try:
-            await query.message.delete()
-        except:
-            pass
-        
-        await query.message.reply_text(
-            text,
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=reply_markup
-        )
-        return
-    
-    elif query.data == "categories":
-        categories = {}
-        for hall_publishers in hall_manager.halls.values():
-            for pub in hall_publishers:
-                if pub_categories := pub.get('categories', []):
-                    for category in pub_categories:
-                        categories[category] = categories.get(category, 0) + 1
-        
-        if categories:
-            text = "*تصنيفات دور النشر* 📚\n\n"
-            sorted_categories = sorted(categories.items(), key=lambda x: (-x[1], x[0]))
-            for cat, count in sorted_categories:
-                text += f"• {cat}: {count} ناشر\n"
+        # Handle the callbacks
+        if query.data == "search":
+            text = (
+                "*البحث عن ناشر* 🔍\n\n"
+                "اكتب اسم دار النشر أو رقم الجناح"
+            )
+            await safe_edit_message(query, text)
+            
+        elif query.data == "maps":
+            text = "*خريطة المعرض* 🗺\n\nاختر القاعة التي تريد عرض خريطتها:"
+            keyboard = []
+            row = []
+            for hall_num in range(1, 6):
+                row.append(InlineKeyboardButton(f"قاعة {hall_num}", callback_data=f"hall_{hall_num}"))
+                if len(row) == 2:
+                    keyboard.append(row)
+                    row = []
+            if row:
+                keyboard.append(row)
+            keyboard.append([InlineKeyboardButton("عودة للقائمة الرئيسية", callback_data="start")])
+            
+            await safe_delete_message(query.message)
+            await query.message.reply_text(
+                text,
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=InlineKeyboardMarkup(keyboard)
+            )
+            
+        elif query.data.startswith("pub_"):
+            code = query.data.replace("pub_", "")
+            publisher = hall_manager.get_publisher_by_code(code)
+            if publisher:
+                await handle_publisher_selection(update, context, publisher, is_callback=True)
+            else:
+                text = "عذراً، لم يتم العثور على الناشر"
+                await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+            
+        elif query.data.startswith("loc_"):
+            # Show map with highlighted publisher
+            _, hall_number, code = query.data.split("_")
+            await handle_publisher_location(query, int(hall_number), code)
+            
+        elif query.data.startswith("hall_"):
+            hall_number = int(query.data.split("_")[1])
+            await handle_hall_map(query, hall_number)
+            
+        elif query.data.startswith("section_"):
+            _, hall_number, section = query.data.split("_")
+            await handle_section_view(query, int(hall_number), section)
+            
+        elif query.data == "categories":
+            await handle_categories_view(query)
+            
+        elif query.data == "events":
+            await handle_events_view(query)
+            
+        elif query.data == "favorites":
+            await show_favorites(update, context)
+            
+        elif query.data.startswith("fav_"):
+            code = query.data.replace("fav_", "")
+            publisher = hall_manager.get_publisher_by_code(code)
+            if publisher:
+                await toggle_favorite(update, context, code)
+                await handle_publisher_selection(update, context, publisher, is_callback=True)
+            
+        elif query.data == "about":
+            await handle_about_view(query)
+            
+        elif query.data == "start":
+            await safe_delete_message(query.message)
+            await show_homepage(update, context)
+            
         else:
-            text = "*تصنيفات دور النشر* 📚\n\nلم يتم إضافة تصنيفات بعد"
-        
-        keyboard = [[InlineKeyboardButton("عودة للقائمة الرئيسية", callback_data="start")]]
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        
-        await query.message.reply_text(
-            text,
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=reply_markup
-        )
-    
-    elif query.data == "events":
-        all_offers = []
-        for hall_publishers in hall_manager.halls.values():
-            for pub in hall_publishers:
-                if offers := pub.get("offers", []):
-                    for offer in offers:
-                        all_offers.append(f"• {offer} ({pub.get('nameAr', 'بدون اسم')})")
-        
-        if all_offers:
-            text = "*عروض دور النشر* 💥\n\n" + "\n".join(all_offers)
-        else:
-            text = "*عروض دور النشر* 💥\n\nلم يتم إضافة عروض بعد"
-        
-        keyboard = [[InlineKeyboardButton("عودة للقائمة الرئيسية", callback_data="start")]]
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        
-        await query.message.reply_text(
-            text,
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=reply_markup
-        )
-    
-    elif query.data == "favorites":
-        await show_favorites(update, context)
-        return
-    
-    elif query.data.startswith("fav_"):
-        code = query.data.replace("fav_", "")
-        publisher = hall_manager.get_publisher_by_code(code)
-        if publisher:
-            is_added = await toggle_favorite(update, context, code)
-            await handle_publisher_selection(update, context, publisher, is_callback=True)
-        return
-    
-    elif query.data == "about":
-        total_publishers = sum(len(pubs) for pubs in hall_manager.halls.values())
-        text = (
-            "*معرض القاهرة الدولي للكتاب ٢٠٢٥* ℹ️\n\n"
-            "أكبر وأقدم معرض كتاب في العالم العربي\n\n"
-            f"• عدد دور النشر: {total_publishers}\n"
-            "• عدد القاعات: 5\n"
-            "• الموقع: مركز مصر للمعارض الدولية"
-        )
-        keyboard = [[InlineKeyboardButton("عودة للقائمة الرئيسية", callback_data="start")]]
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        
-        await query.message.reply_text(
-            text,
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=reply_markup
-        )
-    
-    elif query.data == "start":
-        # Always delete the old message if possible (in case it was media).
-        try:
-            await query.message.delete()
-        except:
-            pass
-        # Show the same homepage as /start
-        await show_homepage(update, context)
-    
-    else:
-        # Fallback
+            # Fallback for unhandled callback types
+            text = "عذراً، حدث خطأ"
+            await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+            
+    except Exception as e:
+        logger.error(f"Error in callback handler: {e}")
         text = "عذراً، حدث خطأ"
-        keyboard = [[InlineKeyboardButton("عودة للقائمة الرئيسية", callback_data="start")]]
-        await safe_edit_message(text, InlineKeyboardMarkup(keyboard))
+        await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
 
 
 async def show_favorites(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -768,6 +599,209 @@ async def toggle_favorite(update: Update, context: ContextTypes.DEFAULT_TYPE, pu
     """Add or remove a publisher from favorites."""
     user_id = update.effective_user.id
     return favorites_manager.toggle_favorite(user_id, publisher_code)
+
+
+# ------------------------------------------------------------------------
+# Handler Functions
+# ------------------------------------------------------------------------
+async def handle_hall_map(query: telegram.CallbackQuery, hall_number: int) -> None:
+    """Handle displaying a hall map with sections and navigation."""
+    hall_info = map_manager.get_hall_info(hall_number)
+    if not hall_info:
+        text = "عذراً، لا يمكن عرض الخريطة حالياً"
+        await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+        return
+    
+    publishers = hall_manager.get_hall_publishers(hall_number)
+    svg_path = map_manager.save_hall_map(hall_number, publishers, highlight_code=None)
+    if not svg_path:
+        text = "عذراً، لا يمكن عرض الخريطة حالياً"
+        await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+        return
+    
+    try:
+        png_path = svg_path.replace(".svg", ".png")
+        cairosvg.svg2png(url=svg_path, write_to=png_path)
+        
+        # Create section buttons
+        keyboard = []
+        row = []
+        for section in hall_info["sections"]:
+            section_pubs = hall_manager.get_section_publishers(hall_number, section)
+            row.append(InlineKeyboardButton(
+                f"قسم {section} ({len(section_pubs)})",
+                callback_data=f"section_{hall_number}_{section}"
+            ))
+            if len(row) == 2:
+                keyboard.append(row)
+                row = []
+        if row:
+            keyboard.append(row)
+        
+        # Add navigation buttons
+        nav_row = create_nav_buttons(hall_number, 5)
+        if nav_row:
+            keyboard.append(nav_row)
+        
+        # Add home buttons
+        keyboard.append([
+            InlineKeyboardButton("عودة لقائمة القاعات", callback_data="maps"),
+            InlineKeyboardButton("القائمة الرئيسية", callback_data="start")
+        ])
+        
+        caption = (
+            f"*خريطة {hall_info['name']}* 🗺\n"
+            f"عدد الناشرين: {len(publishers)}"
+        )
+        
+        await safe_delete_message(query.message)
+        
+        with open(png_path, "rb") as photo:
+            await query.message.reply_photo(
+                photo=photo,
+                caption=caption,
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=InlineKeyboardMarkup(keyboard)
+            )
+        
+        # Cleanup temporary files
+        os.remove(svg_path)
+        os.remove(png_path)
+        
+    except Exception as e:
+        logger.error(f"Error generating map: {e}")
+        text = "عذراً، لا يمكن عرض الخريطة حالياً"
+        await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+
+async def handle_section_view(query: telegram.CallbackQuery, hall_number: int, section: str) -> None:
+    """Handle displaying publishers in a specific section."""
+    publishers = hall_manager.get_section_publishers(hall_number, section)
+    if publishers:
+        text = f"*ناشرو قسم {section} - قاعة {hall_number}* 📍\n\n"
+        for pub in publishers:
+            text += f"• *{pub['nameAr']}*\n"
+            text += f"  🏷 الكود: `{pub['code']}`\n\n"
+    else:
+        text = (
+            f"*قسم {section} - قاعة {hall_number}* 📍\n\n"
+            "لا يوجد ناشرين في هذا القسم حالياً"
+        )
+    
+    keyboard = [
+        [
+            InlineKeyboardButton(
+                f"عودة لخريطة قاعة {hall_number}",
+                callback_data=f"hall_{hall_number}"
+            ),
+            InlineKeyboardButton("القائمة الرئيسية", callback_data="start")
+        ]
+    ]
+    
+    await safe_delete_message(query.message)
+    await query.message.reply_text(
+        text,
+        parse_mode=ParseMode.MARKDOWN,
+        reply_markup=InlineKeyboardMarkup(keyboard)
+    )
+
+async def handle_categories_view(query: telegram.CallbackQuery) -> None:
+    """Handle displaying publisher categories."""
+    categories = {}
+    for hall_publishers in hall_manager.halls.values():
+        for pub in hall_publishers:
+            if pub_categories := pub.get('categories', []):
+                for category in pub_categories:
+                    categories[category] = categories.get(category, 0) + 1
+    
+    if categories:
+        text = "*تصنيفات دور النشر* 📚\n\n"
+        sorted_categories = sorted(categories.items(), key=lambda x: (-x[1], x[0]))
+        for cat, count in sorted_categories:
+            text += f"• {cat}: {count} ناشر\n"
+    else:
+        text = "*تصنيفات دور النشر* 📚\n\nلم يتم إضافة تصنيفات بعد"
+    
+    await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+
+async def handle_events_view(query: telegram.CallbackQuery) -> None:
+    """Handle displaying publisher events and offers."""
+    all_offers = []
+    for hall_publishers in hall_manager.halls.values():
+        for pub in hall_publishers:
+            if offers := pub.get("offers", []):
+                for offer in offers:
+                    all_offers.append(f"• {offer} ({pub.get('nameAr', 'بدون اسم')})")
+    
+    if all_offers:
+        text = "*عروض دور النشر* 💥\n\n" + "\n".join(all_offers)
+    else:
+        text = "*عروض دور النشر* 💥\n\nلم يتم إضافة عروض بعد"
+    
+    await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+
+async def handle_about_view(query: telegram.CallbackQuery) -> None:
+    """Handle displaying about information."""
+    total_publishers = sum(len(pubs) for pubs in hall_manager.halls.values())
+    text = (
+        "*معرض القاهرة الدولي للكتاب ٢٠٢٥* ℹ️\n\n"
+        "أكبر وأقدم معرض كتاب في العالم العربي\n\n"
+        f"• عدد دور النشر: {total_publishers}\n"
+        "• عدد القاعات: 5\n"
+        "• الموقع: مركز مصر للمعارض الدولية"
+    )
+    await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+
+async def handle_publisher_location(query: telegram.CallbackQuery, hall_number: int, code: str) -> None:
+    """Handle displaying a publisher's location on the hall map."""
+    hall_info = map_manager.get_hall_info(hall_number)
+    publisher = hall_manager.get_publisher_by_code(code)
+    
+    if not hall_info or not publisher:
+        text = "عذراً، لا يمكن عرض الموقع حالياً"
+        await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+        return
+    
+    publishers = hall_manager.get_hall_publishers(hall_number)
+    svg_path = map_manager.save_hall_map(hall_number, publishers, highlight_code=code)
+    if not svg_path:
+        text = "عذراً، لا يمكن عرض الموقع حالياً"
+        await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+        return
+    
+    try:
+        png_path = svg_path.replace(".svg", ".png")
+        cairosvg.svg2png(url=svg_path, write_to=png_path)
+        
+        keyboard = [
+            [
+                InlineKeyboardButton("↩️ عودة للناشر", callback_data=f"pub_{code}"),
+                InlineKeyboardButton("📋 القائمة الرئيسية", callback_data="start")
+            ]
+        ]
+        
+        caption = (
+            f"*موقع {publisher.get('nameAr', '')}*\n"
+            f"الكود: `{code}` - قاعة {hall_number}"
+        )
+        
+        await safe_delete_message(query.message)
+        
+        with open(png_path, "rb") as photo:
+            await query.message.reply_photo(
+                photo=photo,
+                caption=caption,
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=InlineKeyboardMarkup(keyboard)
+            )
+        
+        # Cleanup temporary files
+        os.remove(svg_path)
+        os.remove(png_path)
+        
+    except Exception as e:
+        logger.error(f"Error generating publisher map: {e}")
+        text = "عذراً، لا يمكن عرض الموقع حالياً"
+        await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
 
 
 # ------------------------------------------------------------------------

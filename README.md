@@ -1,99 +1,85 @@
 # Cairo Book Fair Bot 📚
 
-A Telegram bot for the Cairo International Book Fair 2025, designed to help visitors navigate the fair, find publishers, and track their favorite exhibitors.
+A Telegram bot for the Cairo International Book Fair, helping visitors navigate publishers, halls, and events.
 
 ## Features 🌟
 
-- **Publisher Search** 🔍
-  - Search by name (Arabic/English)
-  - Search by booth code
-  - Search by hall number
-
-- **Interactive Maps** 🗺
-  - View hall layouts
-  - Locate publishers
-  - Navigate between sections
-
-- **Favorites System** ⭐️
-  - Save favorite publishers
-  - Quick access to saved exhibitors
-  - Personalized experience
-
-- **Analytics & Monitoring** 📊
-  - User interaction tracking
-  - Performance metrics
-  - Usage statistics
-
-## Technical Stack 🛠
-
-- Python 3.11
-- python-telegram-bot
-- Analytics system
-- Deployment on Railway
-
-## Setup & Installation 🚀
-
-1. Clone the repository:
-```bash
-git clone https://github.com/Othmancee/BookFairBot.git
-cd BookFairBot
-```
-
-2. Create a virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-4. Set up environment variables:
-Create a `.env` file with:
-```
-BOT_TOKEN=your_telegram_bot_token
-TZ=Africa/Cairo
-```
-
-5. Run the bot:
-```bash
-python deploy.py
-```
+- 🔍 Search publishers by name or booth code
+- 🗺 Interactive hall maps with section navigation
+- ⭐️ Bookmark favorite publishers
+- 📅 View events and special offers
+- 📍 Find adjacent publishers
+- 📊 Analytics tracking with GA4
 
 ## Project Structure 📁
 
 ```
-BookFairBot/
+bookfairbot/
 ├── bot.py              # Main bot logic
-├── deploy.py           # Deployment script
-├── halls/              # Publishers data
-│   ├── __init__.py
+├── analytics.py        # GA4 tracking
+├── halls/             # Hall data
 │   ├── hall_manager.py
-│   └── hall*.json      # Hall data files
-├── analytics.py        # Analytics system
-├── favorites.py        # Favorites management
-├── maps.py            # Map generation
-└── requirements.txt    # Dependencies
+│   └── hall*.json     # Hall data files
+├── assets/            # Media assets
+│   └── image.png      # Bot logo
+├── requirements.txt   # Dependencies
+└── README.md         # Documentation
 ```
 
-## Deployment 🌐
+## Setup 🛠
 
-The bot is configured for deployment on Railway:
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Configure environment variables in `.env`:
+   ```
+   BOT_TOKEN=your_telegram_bot_token
+   GA4_MEASUREMENT_ID=your_ga4_measurement_id
+   GA4_API_SECRET=your_ga4_api_secret
+   RAILWAY_ENVIRONMENT=production
+   ```
+
+3. Run the bot:
+   ```bash
+   python bot.py
+   ```
+
+## Deployment on Railway 🚂
 
 1. Connect your GitHub repository to Railway
-2. Set the required environment variables
-3. Railway will automatically deploy using the Procfile
+2. Add the environment variables in Railway's dashboard
+3. Deploy using the Railway CLI:
+   ```bash
+   railway up
+   ```
 
-## Contributing 🤝
+## Analytics 📊
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+The bot uses Google Analytics 4 for tracking:
+- User searches and results
+- Navigation patterns
+- Feature usage
+- Performance metrics
+- Error tracking
+
+View analytics in the GA4 dashboard under property: Cairo Book Fair Bot
+
+## Maintenance 🔧
+
+- Update hall data in `halls/hall*.json`
+- Monitor GA4 dashboard for usage patterns
+- Check error logs in Railway dashboard
+- Update event information as needed
+
+## Support 💬
+
+For issues or questions:
+- Open an issue on GitHub
+- Contact: support@asfar.io
+- Visit: https://asfar.io/
 
 ## License 📄
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contact 📧
-
-For any queries or support, please contact [Your Contact Information] 
+Copyright (c) 2024 Asfar.io. All rights reserved. 

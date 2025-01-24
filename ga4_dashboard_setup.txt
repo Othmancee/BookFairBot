@@ -1,0 +1,134 @@
+GA4 Dashboard Setup Guide
+
+1. Main Overview Dashboard
+------------------------
+Name: "Bot Performance Overview"
+Reports:
+a) User Engagement
+   - Metric: User engagement time by feature
+   - Dimension: Feature name
+   - Visualization: Bar chart
+   - Filter: event_name = "user_engagement"
+
+b) Search Performance
+   - Metric: Search count, Success rate
+   - Dimension: Search type (publisher_name, publisher_code, hall_number)
+   - Visualization: Pie chart + Line chart
+   - Filter: event_name = "search"
+
+c) Navigation Flow
+   - Metric: Screen views
+   - Dimensions: from_screen, to_screen
+   - Visualization: Sankey diagram
+   - Filter: event_name = "screen_navigation"
+
+2. Publisher Interactions Dashboard
+--------------------------------
+Name: "Publisher Analytics"
+Reports:
+a) Most Viewed Publishers
+   - Metric: View count
+   - Dimension: publisher_name, publisher_code
+   - Visualization: Table
+   - Filter: event_name = "publisher_interaction" AND action = "view"
+
+b) Bookmark Analytics
+   - Metric: Bookmark actions
+   - Dimension: Action type (add/remove)
+   - Visualization: Counter + Trend line
+   - Filter: event_name = "bookmark_action"
+
+3. Map Usage Dashboard
+--------------------
+Name: "Map Interactions"
+Reports:
+a) Hall Views
+   - Metric: View count
+   - Dimension: hall_number
+   - Visualization: Bar chart
+   - Filter: event_name = "map_interaction" AND action = "view"
+
+b) Section Analytics
+   - Metric: Section selections
+   - Dimensions: hall_number, section
+   - Visualization: Heat map
+   - Filter: event_name = "map_interaction" AND action = "section_select"
+
+4. Performance Monitoring Dashboard
+--------------------------------
+Name: "Technical Performance"
+Reports:
+a) Operation Timing
+   - Metric: Average duration_ms
+   - Dimension: operation
+   - Visualization: Line chart
+   - Filter: event_name = "performance"
+
+b) Error Tracking
+   - Metric: Error count
+   - Dimensions: error_type, error_message
+   - Visualization: Table
+   - Filter: event_name = "error"
+
+Setup Instructions:
+------------------
+1. Access GA4:
+   - Go to Google Analytics (analytics.google.com)
+   - Select your property
+
+2. Create Custom Reports:
+   - Click "Library" in the left sidebar
+   - Click "Create new report"
+   - For each dashboard section above:
+     a) Click "+ Create Report"
+     b) Select "Blank" template
+     c) Configure dimensions and metrics as specified
+     d) Set the visualization type
+     e) Add filters as needed
+     f) Save the report
+
+3. Create Dashboards:
+   - In Library, click "Create new dashboard"
+   - Add the relevant reports to each dashboard
+   - Arrange reports in a logical layout
+   - Save the dashboard
+
+4. Set Up Automated Emails:
+   - For each dashboard:
+     a) Click "Share" button
+     b) Set up email schedule (daily/weekly)
+     c) Add recipients
+
+5. Custom Dimensions Setup:
+   - Go to Admin > Custom Definitions
+   - Create custom dimensions for:
+     * publisher_code
+     * hall_number
+     * section
+     * feature_name
+     * error_type
+
+6. Automated Alerts:
+   - Set up alerts for:
+     * High error rates
+     * Unusual search patterns
+     * Performance degradation
+     * Sudden drops in engagement
+
+Useful Segments:
+---------------
+1. Active Users:
+   - Users with > 3 interactions per session
+
+2. Power Users:
+   - Users who use maps AND search in same session
+   - Users with bookmarks
+
+3. Problem Sessions:
+   - Sessions with errors
+   - Sessions with slow operations (duration_ms > 2000)
+
+4. Feature Usage:
+   - Map-heavy users
+   - Search-heavy users
+   - Bookmark-active users 
