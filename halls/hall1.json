@@ -163,7 +163,7 @@
 ,
   {"code":"b4","nameAr":"","nameEn":"","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":440,"y":980,"width":120,"height":30},"width":120,"height":30,"color":"#f7931b","is_rectangle":true}
 ,
-   {"code":"B3","nameAr":"","nameEn":"","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":920,"width":180,"height":30},"width":180,"height":30,"color":"#5fba45","is_rectangle":true}
+   {"code":"B3","nameAr":"الهيئة العامة لقصور الثقافة","nameEn":"","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":260,"y":920,"width":180,"height":30},"width":180,"height":30,"color":"#5fba45","is_rectangle":true}
 ,
 {"code":"B6","nameAr":"","nameEn":"","hall":1,"offers":[],"categories":[],"section":"B","position":{"x":440,"y":920,"width":30,"height":30},"width":30,"height":30,"color":"#bcbdbf","is_rectangle":true}
 ,

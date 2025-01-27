@@ -20,12 +20,19 @@ var/
 .installed.cfg
 *.egg
 
+# Environment and credentials
+.env
+*.env
+.env.*
+*.json
+!package.json
+!package-lock.json
+
 # Virtual Environment
 venv/
 ENV/
-
-# Environment Variables
-.env
+env.bak/
+venv.bak/
 
 # IDE
 .idea/
@@ -33,23 +40,11 @@ ENV/
 *.swp
 *.swo
 
-# Logs
+# Logs and databases
 *.log
-
-# Temporary files
-*.svg
-*.png
-!assets/*.png
-
-# Environment Variables and Secrets
-credentials.json
-google-analytics-credentials.json
-
-# Logs and Data
-logs/
-data/
-cache/
-.pytest_cache/
+*.sqlite
+*.db
+*.bak
 
 # OS
 .DS_Store

@@ -3,7 +3,7 @@
 
 import logging
 import os
-from typing import Final, Dict, List
+from typing import Final, Dict, List, Any, Optional
 from dotenv import load_dotenv
 from telegram import (
     Update,
@@ -27,7 +27,10 @@ import telegram
 from favorites import FavoritesManager
 from analytics import GA4Manager
 import functools
-from time import time
+import time as time_module  # Rename import to avoid conflict
+from pathlib import Path
+from datetime import datetime
+from functools import wraps
 
 # Enable logging
 logging.basicConfig(
@@ -44,15 +47,13 @@ logger = logging.getLogger(__name__)
 load_dotenv()
 TOKEN: Final = os.getenv('BOT_TOKEN')
 
-# Environment setup
-IS_PRODUCTION = os.getenv('RAILWAY_ENVIRONMENT') == 'production'
+# Initialize components
+IS_PRODUCTION: Final = os.getenv('RAILWAY_ENVIRONMENT') == 'production'
 GA4_DEBUG = os.getenv('GA4_DEBUG', 'false').lower() == 'true'
-
-# Initialize managers
 hall_manager = HallManager()
 map_manager = MapManager()
 favorites_manager = FavoritesManager()
-ga4_manager = GA4Manager()  # Initialize without parameters
+analytics = GA4Manager()
 
 if not IS_PRODUCTION:
     logger.warning(
@@ -60,29 +61,49 @@ if not IS_PRODUCTION:
         "Set RAILWAY_ENVIRONMENT=production to enable GA4 tracking."
     )
 
+# Initialize handlers
+if os.getenv('DEBUG', 'false').lower() == 'true':
+    event_bus.subscribe(LoggingHandler())
+
 # Add performance monitoring decorator
 def track_performance(func):
-    @functools.wraps(func)
-    async def wrapper(*args, **kwargs):
-        start_time = time()
+    """Decorator to track function performance and errors."""
+    @wraps(func)
+    async def wrapper(update, context, *args, **kwargs):
+        start_time = time_module.time()
+        user_id = str(update.effective_user.id) if update and update.effective_user else "unknown"
+        
         try:
-            result = await func(*args, **kwargs)
-            return result
-        finally:
-            duration = time() - start_time
-            # Get user_id if available
-            user_id = None
-            if args and isinstance(args[0], Update):
-                user_id = str(args[0].effective_user.id) if args[0].effective_user else None
+            result = await func(update, context, *args, **kwargs)
+            duration_ms = int((time_module.time() - start_time) * 1000)
             
-            if duration > 1.0:  # Log slow operations
-                logger.warning(f"{func.__name__} took {duration:.2f} seconds")
-                if user_id:
-                    ga4_manager.track_performance(
-                        user_id=user_id,
-                        operation=func.__name__,
-                        duration_ms=duration * 1000
-                    )
+            # Track performance
+            analytics.track_performance(
+                user_id=user_id,
+                operation=func.__name__,
+                duration_ms=duration_ms
+            )
+            return result
+            
+        except Exception as e:
+            duration_ms = int((time_module.time() - start_time) * 1000)
+            
+            # Track error
+            analytics.track_error(
+                user_id=user_id,
+                error_type=type(e).__name__,
+                error_message=str(e)
+            )
+            
+            # Track performance
+            analytics.track_performance(
+                user_id=user_id,
+                operation=func.__name__,
+                duration_ms=duration_ms
+            )
+            
+            raise e
+    
     return wrapper
 
 async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -92,7 +113,7 @@ async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> N
     # Track error in GA4
     if isinstance(update, Update):
         user_id = str(update.effective_user.id) if update.effective_user else "unknown"
-        ga4_manager.track_error(
+        analytics.track_error(
             user_id=user_id,
             error_type=error.__class__.__name__,
             error_message=str(error)
@@ -176,10 +197,17 @@ async def show_homepage(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
 # ------------------------------------------------------------------------
 # 2. Command Handlers (/start, /help, etc.)
 # ------------------------------------------------------------------------
+@track_performance
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """
     The /start command simply shows the 'home page' using our shared function.
     """
+    user = update.effective_user
+    analytics.track_navigation(
+        user_id=str(user.id),
+        from_screen="start",
+        to_screen="main_menu"
+    )
     await show_homepage(update, context)
 
 
@@ -229,11 +257,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     
     # Track search with enhanced parameters
     results = hall_manager.search_publishers(text)
-    ga4_manager.track_search(
+    analytics.track_search(
         user_id=user_id,
         query=text,
-        success=bool(results),
-        results_count=len(results)
+        results_count=len(results),
+        success=len(results) > 0
     )
     
     if not results:
@@ -268,7 +296,7 @@ async def show_search_results(update: Update, results: List[Dict]) -> None:
     for pub in results:
         button = InlineKeyboardButton(
             f"{pub.get('code', '??')} - {pub.get('nameAr', 'بدون اسم')}",
-            callback_data=f"pub_{pub.get('code', '')}"
+            callback_data=f"pub_{pub.get('hall')}_{pub.get('code', '')}"
         )
         row.append(button)
         if len(row) == 2:
@@ -290,57 +318,86 @@ async def handle_publisher_selection(
     is_callback: bool = False
 ) -> None:
     """Handle when a user selects a publisher from the search list."""
-    # Get publisher info with enhanced format
-    info = hall_manager.format_publisher_info(publisher)
-    
-    # Get adjacent publishers
-    hall_number = publisher['hall']
-    section = publisher.get('section')
-    if section:
-        adjacent_pubs = hall_manager.get_adjacent_publishers(hall_number, section, publisher['code'])
-        if adjacent_pubs:
-            info += "\n\n*الأجنحة المجاورة:* 📍\n"
-            for adj_pub in adjacent_pubs:
-                info += f"• {adj_pub.get('nameAr', 'بدون اسم')} ({adj_pub.get('code', '??')})\n"
-    
-    # Check if publisher is in favorites
-    user_id = update.effective_user.id
-    is_favorite = publisher['code'] in favorites_manager.get_user_favorites(user_id)
-    
-    # Create navigation buttons
-    keyboard = [
-        [
-            InlineKeyboardButton(
-                "❌ إزالة من المفضلة" if is_favorite else "⭐️ أضف للمفضلة",
-                callback_data=f"fav_{publisher['code']}"
-            )
-        ],
-        [
-            InlineKeyboardButton("📍 موقع الناشر", callback_data=f"loc_{publisher['hall']}_{publisher['code']}"),
-            InlineKeyboardButton("📋 القائمة الرئيسية", callback_data="start")
+    try:
+        logger.info(f"Handling publisher selection: {publisher.get('code')} in hall {publisher.get('hall')}")
+        
+        # Get publisher info with enhanced format
+        info = hall_manager.format_publisher_info(publisher)
+        
+        # Get adjacent publishers
+        hall_number = publisher['hall']
+        section = publisher.get('section')
+        if section:
+            adjacent_pubs = hall_manager.get_adjacent_publishers(hall_number, section, publisher['code'])
+            if adjacent_pubs:
+                info += "\n\n*الأجنحة المجاورة:* 📍\n"
+                for adj_pub in adjacent_pubs:
+                    info += f"• {adj_pub.get('nameAr', 'بدون اسم')} ({adj_pub.get('code', '??')})\n"
+        
+        # Create composite key for favorites
+        composite_key = f"{hall_number}_{publisher['code']}"
+        
+        # Check if publisher is in favorites
+        user_id = update.effective_user.id
+        user_favorites = favorites_manager.get_user_favorites(user_id)
+        is_favorite = composite_key in user_favorites
+        logger.info(f"Favorite status for {composite_key}: {is_favorite}")
+        
+        # Create navigation buttons
+        keyboard = [
+            [
+                InlineKeyboardButton(
+                    "❌ إزالة من المفضلة" if is_favorite else "⭐️ أضف للمفضلة",
+                    callback_data=f"fav_{hall_number}_{publisher['code']}"
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "📍 موقع الناشر",
+                    callback_data=f"loc_{hall_number}_{publisher['code']}"
+                ),
+                InlineKeyboardButton(
+                    "📋 القائمة الرئيسية",
+                    callback_data="start"
+                )
+            ]
         ]
-    ]
-    reply_markup = InlineKeyboardMarkup(keyboard)
-    
-    if is_callback:
-        try:
-            await update.callback_query.message.edit_text(
+        
+        if is_callback:
+            try:
+                await safe_edit_message(
+                    update.callback_query,
+                    info,
+                    InlineKeyboardMarkup(keyboard)
+                )
+            except Exception as e:
+                logger.error(f"Error updating message: {e}", exc_info=True)
+                await update.callback_query.message.reply_text(
+                    text=info,
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=InlineKeyboardMarkup(keyboard)
+                )
+        else:
+            await update.message.reply_text(
                 text=info,
                 parse_mode=ParseMode.MARKDOWN,
-                reply_markup=reply_markup
+                reply_markup=InlineKeyboardMarkup(keyboard)
             )
-        except:
-            await update.callback_query.message.reply_text(
-                text=info,
-                parse_mode=ParseMode.MARKDOWN,
-                reply_markup=reply_markup
+            
+    except Exception as e:
+        logger.error(f"Error in handle_publisher_selection: {e}", exc_info=True)
+        error_message = "عذراً، حدث خطأ أثناء عرض معلومات الناشر"
+        if is_callback:
+            await safe_edit_message(
+                update.callback_query,
+                error_message,
+                InlineKeyboardMarkup(create_home_button())
             )
-    else:
-        await update.message.reply_text(
-            text=info,
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=reply_markup
-        )
+        else:
+            await update.message.reply_text(
+                error_message,
+                reply_markup=InlineKeyboardMarkup(create_home_button())
+            )
 
 
 # ------------------------------------------------------------------------
@@ -394,7 +451,7 @@ async def track_feature_engagement(context: ContextTypes.DEFAULT_TYPE, user_id: 
     prev_feature = context.user_data.get('current_feature', 'start')
     
     # Track navigation between screens
-    ga4_manager.track_navigation(
+    analytics.track_navigation(
         user_id=user_id,
         from_screen=prev_feature,
         to_screen=new_feature
@@ -402,7 +459,7 @@ async def track_feature_engagement(context: ContextTypes.DEFAULT_TYPE, user_id: 
     
     # Track feature usage
     if new_feature in ["search", "maps", "favorites", "events"]:
-        ga4_manager.track_feature_use(
+        analytics.track_feature_use(
             user_id=user_id,
             feature=new_feature
         )
@@ -410,13 +467,13 @@ async def track_feature_engagement(context: ContextTypes.DEFAULT_TYPE, user_id: 
         
         # Track engagement time
         if 'feature_start_time' in context.user_data:
-            duration = time() - context.user_data['feature_start_time']
-            ga4_manager.track_user_engagement(
+            duration = time_module.time() - context.user_data['feature_start_time']
+            analytics.track_user_engagement(
                 user_id=user_id,
                 feature=prev_feature,
                 engagement_time_msec=int(duration * 1000)
             )
-        context.user_data['feature_start_time'] = time()
+        context.user_data['feature_start_time'] = time_module.time()
 
 
 # ------------------------------------------------------------------------
@@ -427,53 +484,78 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
     """Handle all callback queries from inline keyboards."""
     query = update.callback_query
     user_id = str(update.effective_user.id)
-    await query.answer()
-    
-    # Track feature engagement
-    await track_feature_engagement(context, user_id, query.data)
     
     try:
-        # Track specific interactions first
-        if query.data.startswith("hall_"):
-            hall_number = int(query.data.split("_")[1])
-            ga4_manager.track_map_interaction(
-                user_id=user_id,
-                hall_number=hall_number,
-                action="view"
-            )
+        await query.answer()
+        logger.info(f"Handling callback for user {user_id}: {query.data}")
         
-        elif query.data.startswith("section_"):
-            _, hall_number, section = query.data.split("_")
-            ga4_manager.track_map_interaction(
-                user_id=user_id,
-                hall_number=int(hall_number),
-                action="section_select",
-                section=section
-            )
+        # Track feature engagement
+        await track_feature_engagement(context, user_id, query.data)
         
-        elif query.data.startswith("pub_"):
-            code = query.data.replace("pub_", "")
-            publisher = hall_manager.get_publisher_by_code(code)
-            if publisher:
-                ga4_manager.track_publisher_interaction(
+        if query.data.startswith("fav_"):
+            try:
+                logger.info(f"Processing favorite toggle callback: {query.data}")
+                # Validate callback data format
+                parts = query.data.split("_")
+                if len(parts) != 3:
+                    raise ValueError(f"Invalid favorite callback format: {query.data}")
+                
+                _, hall_number, code = parts
+                hall_number = int(hall_number)
+                logger.info(f"Parsed hall_number: {hall_number}, code: {code}")
+                
+                # Verify publisher exists
+                publisher = hall_manager.get_publisher_by_code(code, hall_number)
+                if not publisher:
+                    logger.error(f"Publisher not found - hall: {hall_number}, code: {code}")
+                    await safe_edit_message(
+                        query, 
+                        "عذراً، لم يتم العثور على الناشر",
+                        InlineKeyboardMarkup(create_home_button())
+                    )
+                    return
+                
+                logger.info(f"Found publisher: {publisher.get('nameAr')} in hall {hall_number}")
+                
+                # Create composite key
+                composite_key = f"{hall_number}_{code}"
+                
+                # Check current favorite status
+                is_favorite = composite_key in favorites_manager.get_user_favorites(int(user_id))
+                logger.info(f"Current favorite status: {is_favorite}")
+                
+                # Track analytics before toggle
+                action = "remove" if is_favorite else "add"
+                analytics.track_bookmark_action(
                     user_id=user_id,
                     publisher_code=code,
-                    action="view",
-                    publisher_name=publisher.get('nameAr')
+                    action=action
+                )
+                
+                # Toggle favorite
+                toggle_result = await toggle_favorite(update, context, composite_key)
+                logger.info(f"Toggle result: {toggle_result}")
+                
+                # Update view
+                await handle_publisher_selection(update, context, publisher, is_callback=True)
+                logger.info("Publisher view updated successfully")
+                
+            except ValueError as e:
+                logger.error(f"Invalid data format in favorite toggle: {e}", exc_info=True)
+                await safe_edit_message(
+                    query,
+                    "عذراً، حدث خطأ في تنسيق البيانات",
+                    InlineKeyboardMarkup(create_home_button())
+                )
+            except Exception as e:
+                logger.error(f"Error in favorite toggle: {e}", exc_info=True)
+                await safe_edit_message(
+                    query,
+                    "عذراً، حدث خطأ أثناء تحديث المفضلة",
+                    InlineKeyboardMarkup(create_home_button())
                 )
         
-        elif query.data.startswith("fav_"):
-            code = query.data.replace("fav_", "")
-            is_favorite = code in favorites_manager.get_user_favorites(int(user_id))
-            action = "remove" if is_favorite else "add"
-            ga4_manager.track_bookmark_action(
-                user_id=user_id,
-                publisher_code=code,
-                action=action
-            )
-        
-        # Handle the callbacks
-        if query.data == "search":
+        elif query.data == "search":
             text = (
                 "*البحث عن ناشر* 🔍\n\n"
                 "اكتب اسم دار النشر أو رقم الجناح"
@@ -493,112 +575,162 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
                 keyboard.append(row)
             keyboard.append([InlineKeyboardButton("عودة للقائمة الرئيسية", callback_data="start")])
             
-            await safe_delete_message(query.message)
-            await query.message.reply_text(
+            await safe_edit_message(
+                query,
                 text,
-                parse_mode=ParseMode.MARKDOWN,
-                reply_markup=InlineKeyboardMarkup(keyboard)
+                InlineKeyboardMarkup(keyboard)
             )
             
         elif query.data.startswith("pub_"):
-            code = query.data.replace("pub_", "")
-            publisher = hall_manager.get_publisher_by_code(code)
-            if publisher:
-                await handle_publisher_selection(update, context, publisher, is_callback=True)
-            else:
-                text = "عذراً، لم يتم العثور على الناشر"
-                await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+            try:
+                _, hall_number, code = query.data.split("_")
+                hall_number = int(hall_number)
+                publisher = hall_manager.get_publisher_by_code(code, hall_number)
+                if publisher:
+                    # Track publisher view
+                    analytics.track_publisher_view(
+                        user_id=user_id,
+                        publisher_code=code,
+                        hall_number=str(hall_number)
+                    )
+                    await handle_publisher_selection(update, context, publisher, is_callback=True)
+                else:
+                    text = "عذراً، لم يتم العثور على الناشر"
+                    await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+            except Exception as e:
+                logger.error(f"Error handling publisher selection: {e}", exc_info=True)
+                await safe_edit_message(
+                    query,
+                    "عذراً، حدث خطأ أثناء عرض معلومات الناشر",
+                    InlineKeyboardMarkup(create_home_button())
+                )
             
         elif query.data.startswith("loc_"):
-            # Show map with highlighted publisher
-            _, hall_number, code = query.data.split("_")
-            await handle_publisher_location(query, int(hall_number), code)
+            try:
+                _, hall_number, code = query.data.split("_")
+                # Track map interaction
+                analytics.track_map_interaction(
+                    user_id=user_id,
+                    hall_number=hall_number,
+                    action="view"
+                )
+                await handle_publisher_location(query, int(hall_number), code)
+            except Exception as e:
+                logger.error(f"Error handling location view: {e}", exc_info=True)
+                await safe_edit_message(
+                    query,
+                    "عذراً، حدث خطأ أثناء عرض موقع الناشر",
+                    InlineKeyboardMarkup(create_home_button())
+                )
             
         elif query.data.startswith("hall_"):
-            hall_number = int(query.data.split("_")[1])
-            await handle_hall_map(query, hall_number)
+            try:
+                hall_number = int(query.data.split("_")[1])
+                # Track map interaction
+                analytics.track_map_interaction(
+                    user_id=user_id,
+                    hall_number=str(hall_number),
+                    action="view"
+                )
+                await handle_hall_map(query, hall_number)
+            except Exception as e:
+                logger.error(f"Error handling hall map: {e}", exc_info=True)
+                await safe_edit_message(
+                    query,
+                    "عذراً، حدث خطأ أثناء عرض خريطة القاعة",
+                    InlineKeyboardMarkup(create_home_button())
+                )
             
         elif query.data.startswith("section_"):
-            _, hall_number, section = query.data.split("_")
-            await handle_section_view(query, int(hall_number), section)
-            
-        elif query.data == "categories":
-            await handle_categories_view(query)
-            
-        elif query.data == "events":
-            await handle_events_view(query)
+            try:
+                _, hall_number, section = query.data.split("_")
+                # Track map interaction
+                analytics.track_map_interaction(
+                    user_id=user_id,
+                    hall_number=hall_number,
+                    action="view"
+                )
+                await handle_section_view(query, int(hall_number), section)
+            except Exception as e:
+                logger.error(f"Error handling section view: {e}", exc_info=True)
+                await safe_edit_message(
+                    query,
+                    "عذراً، حدث خطأ أثناء عرض القسم",
+                    InlineKeyboardMarkup(create_home_button())
+                )
             
         elif query.data == "favorites":
             await show_favorites(update, context)
             
-        elif query.data.startswith("fav_"):
-            code = query.data.replace("fav_", "")
-            publisher = hall_manager.get_publisher_by_code(code)
-            if publisher:
-                await toggle_favorite(update, context, code)
-                await handle_publisher_selection(update, context, publisher, is_callback=True)
+        elif query.data == "events":
+            await handle_events_view(query)
             
         elif query.data == "about":
             await handle_about_view(query)
             
         elif query.data == "start":
-            await safe_delete_message(query.message)
             await show_homepage(update, context)
             
         else:
-            # Fallback for unhandled callback types
-            text = "عذراً، حدث خطأ"
-            await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
-            
+            logger.warning(f"Unhandled callback data: {query.data}")
+            await safe_edit_message(
+                query,
+                "عذراً، حدث خطأ غير متوقع",
+                InlineKeyboardMarkup(create_home_button())
+            )
+        
     except Exception as e:
-        logger.error(f"Error in callback handler: {e}")
-        text = "عذراً، حدث خطأ"
-        await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+        logger.error(f"Unhandled error in callback handler: {e}", exc_info=True)
+        try:
+            await safe_edit_message(
+                query,
+                "عذراً، حدث خطأ غير متوقع",
+                InlineKeyboardMarkup(create_home_button())
+            )
+        except:
+            logger.error("Failed to send error message to user", exc_info=True)
 
-
-async def show_favorites(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Show user's favorite publishers."""
-    query = update.callback_query
-    user_id = update.effective_user.id
-    
-    favorites = favorites_manager.get_user_favorites(user_id)
-    
-    if not favorites:
-        keyboard = [[InlineKeyboardButton("عودة للقائمة الرئيسية", callback_data="start")]]
-        await query.message.edit_text(
-            "لا توجد لديك دور نشر في المفضلة بعد.\n"
-            "يمكنك إضافة دور النشر للمفضلة عند البحث عنها! ⭐️",
-            reply_markup=InlineKeyboardMarkup(keyboard),
-            parse_mode=ParseMode.MARKDOWN
-        )
-        return
-
-    text = "*المفضلة* ⭐️\n\n"
-    keyboard = []
-    
-    for pub_code in favorites:
-        publisher = hall_manager.get_publisher_by_code(pub_code)
-        if publisher:
-            text += f"• {publisher['nameAr']} ({pub_code})\n"
-            keyboard.append([
-                InlineKeyboardButton(
-                    f"📍 {publisher['nameAr']}",
-                    callback_data=f"pub_{pub_code}"
-                )
-            ])
-    
-    keyboard.append([InlineKeyboardButton("عودة للقائمة الرئيسية", callback_data="start")])
-    
-    await query.message.edit_text(
-        text,
-        reply_markup=InlineKeyboardMarkup(keyboard),
-        parse_mode=ParseMode.MARKDOWN
-    )
-
-async def toggle_favorite(update: Update, context: ContextTypes.DEFAULT_TYPE, publisher_code: str) -> bool:
+@track_performance
+async def toggle_favorite(update: Update, context: ContextTypes.DEFAULT_TYPE, composite_key: str) -> bool:
     """Add or remove a publisher from favorites."""
-    user_id = update.effective_user.id
-    return favorites_manager.toggle_favorite(user_id, publisher_code)
+    try:
+        user_id = update.effective_user.id
+        logger.info(f"Toggling favorite for user {user_id}, composite_key: {composite_key}")
+        
+        # Validate composite key format
+        if '_' not in composite_key:
+            logger.error(f"Invalid composite key format: {composite_key}")
+            return False
+            
+        hall_number, code = composite_key.split('_')
+        try:
+            hall_number = int(hall_number)
+        except ValueError:
+            logger.error(f"Invalid hall number in composite key: {composite_key}")
+            return False
+            
+        # Verify publisher exists
+        publisher = hall_manager.get_publisher_by_code(code, hall_number)
+        if not publisher:
+            logger.error(f"Publisher not found for composite key: {composite_key}")
+            return False
+            
+        # Toggle favorite
+        result = favorites_manager.toggle_favorite(user_id, composite_key)
+        logger.info(f"Toggle result for user {user_id}, composite_key {composite_key}: {'added' if result else 'removed'}")
+        
+        # Track analytics
+        analytics.track_favorite_action(
+            user_id=user_id,
+            publisher_code=composite_key,
+            action="add" if result else "remove"
+        )
+        
+        return result
+        
+    except Exception as e:
+        logger.error(f"Error in toggle_favorite: {e}", exc_info=True)
+        return False
 
 
 # ------------------------------------------------------------------------
@@ -753,55 +885,143 @@ async def handle_about_view(query: telegram.CallbackQuery) -> None:
 
 async def handle_publisher_location(query: telegram.CallbackQuery, hall_number: int, code: str) -> None:
     """Handle displaying a publisher's location on the hall map."""
-    hall_info = map_manager.get_hall_info(hall_number)
-    publisher = hall_manager.get_publisher_by_code(code)
-    
-    if not hall_info or not publisher:
-        text = "عذراً، لا يمكن عرض الموقع حالياً"
-        await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
-        return
-    
-    publishers = hall_manager.get_hall_publishers(hall_number)
-    svg_path = map_manager.save_hall_map(hall_number, publishers, highlight_code=code)
-    if not svg_path:
-        text = "عذراً، لا يمكن عرض الموقع حالياً"
-        await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
-        return
-    
     try:
-        png_path = svg_path.replace(".svg", ".png")
-        cairosvg.svg2png(url=svg_path, write_to=png_path)
+        logger.info(f"Showing location for publisher {code} in hall {hall_number}")
+        hall_info = map_manager.get_hall_info(hall_number)
+        publisher = hall_manager.get_publisher_by_code(code, hall_number)
         
-        keyboard = [
-            [
-                InlineKeyboardButton("↩️ عودة للناشر", callback_data=f"pub_{code}"),
-                InlineKeyboardButton("📋 القائمة الرئيسية", callback_data="start")
+        if not hall_info or not publisher:
+            logger.error(f"Hall info or publisher not found - hall: {hall_number}, code: {code}")
+            text = "عذراً، لا يمكن عرض الموقع حالياً"
+            await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+            return
+        
+        publishers = hall_manager.get_hall_publishers(hall_number)
+        svg_path = map_manager.save_hall_map(hall_number, publishers, highlight_code=code)
+        if not svg_path:
+            logger.error("Failed to generate map")
+            text = "عذراً، لا يمكن عرض الموقع حالياً"
+            await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+            return
+        
+        try:
+            png_path = svg_path.replace(".svg", ".png")
+            cairosvg.svg2png(url=svg_path, write_to=png_path)
+            
+            keyboard = [
+                [
+                    InlineKeyboardButton("↩️ عودة للناشر", callback_data=f"pub_{hall_number}_{code}"),
+                    InlineKeyboardButton("📋 القائمة الرئيسية", callback_data="start")
+                ]
             ]
-        ]
+            
+            caption = (
+                f"*موقع {publisher.get('nameAr', '')}*\n"
+                f"الكود: `{code}` - قاعة {hall_number}"
+            )
+            
+            await safe_delete_message(query.message)
+            
+            with open(png_path, "rb") as photo:
+                await query.message.reply_photo(
+                    photo=photo,
+                    caption=caption,
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=InlineKeyboardMarkup(keyboard)
+                )
+            
+            # Cleanup temporary files
+            os.remove(svg_path)
+            os.remove(png_path)
+            
+        except Exception as e:
+            logger.error(f"Error generating publisher map: {e}", exc_info=True)
+            text = "عذراً، لا يمكن عرض الموقع حالياً"
+            await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+            
+    except Exception as e:
+        logger.error(f"Error in handle_publisher_location: {e}", exc_info=True)
+        text = "عذراً، حدث خطأ أثناء عرض موقع الناشر"
+        await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+
+async def show_favorites(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Show user's favorite publishers."""
+    try:
+        query = update.callback_query
+        user_id = update.effective_user.id
+        logger.info(f"Showing favorites for user {user_id}")
         
-        caption = (
-            f"*موقع {publisher.get('nameAr', '')}*\n"
-            f"الكود: `{code}` - قاعة {hall_number}"
+        # Clean up favorites first
+        favorites_manager.clean_favorites(user_id, hall_manager)
+        
+        # Get cleaned favorites
+        favorites = favorites_manager.get_user_favorites(user_id)
+        logger.info(f"Retrieved favorites for user {user_id}: {favorites}")
+        
+        if not favorites:
+            keyboard = [[InlineKeyboardButton("عودة للقائمة الرئيسية", callback_data="start")]]
+            await safe_edit_message(
+                query,
+                "لا توجد لديك دور نشر في المفضلة بعد.\n"
+                "يمكنك إضافة دور النشر للمفضلة عند البحث عنها! ⭐️",
+                InlineKeyboardMarkup(keyboard)
+            )
+            return
+
+        text = "*المفضلة* ⭐️\n\n"
+        keyboard = []
+        
+        for composite_key in favorites:
+            try:
+                # Validate composite key format
+                if '_' not in composite_key:
+                    logger.warning(f"Invalid favorite format found: {composite_key}")
+                    continue
+                    
+                hall_number, code = composite_key.split('_')
+                try:
+                    hall_number = int(hall_number)
+                except ValueError:
+                    logger.warning(f"Invalid hall number in favorite: {composite_key}")
+                    continue
+                
+                # Get publisher info
+                publisher = hall_manager.get_publisher_by_code(code, hall_number)
+                if not publisher:
+                    logger.warning(f"Publisher not found for favorite: {composite_key}")
+                    continue
+                
+                # Add to display
+                text += f"• {publisher['nameAr']} ({code} - قاعة {hall_number})\n"
+                keyboard.append([
+                    InlineKeyboardButton(
+                        f"📍 {publisher['nameAr']}",
+                        callback_data=f"pub_{hall_number}_{code}"
+                    )
+                ])
+                
+            except Exception as e:
+                logger.error(f"Error processing favorite {composite_key}: {e}", exc_info=True)
+                continue
+        
+        keyboard.append([InlineKeyboardButton("عودة للقائمة الرئيسية", callback_data="start")])
+        
+        await safe_edit_message(
+            query,
+            text,
+            InlineKeyboardMarkup(keyboard)
         )
         
-        await safe_delete_message(query.message)
-        
-        with open(png_path, "rb") as photo:
-            await query.message.reply_photo(
-                photo=photo,
-                caption=caption,
-                parse_mode=ParseMode.MARKDOWN,
-                reply_markup=InlineKeyboardMarkup(keyboard)
-            )
-        
-        # Cleanup temporary files
-        os.remove(svg_path)
-        os.remove(png_path)
-        
     except Exception as e:
-        logger.error(f"Error generating publisher map: {e}")
-        text = "عذراً، لا يمكن عرض الموقع حالياً"
-        await safe_edit_message(query, text, InlineKeyboardMarkup(create_home_button()))
+        logger.error(f"Error showing favorites: {e}", exc_info=True)
+        try:
+            await safe_edit_message(
+                query,
+                "عذراً، حدث خطأ أثناء عرض المفضلة",
+                InlineKeyboardMarkup(create_home_button())
+            )
+        except:
+            logger.error("Failed to send error message to user", exc_info=True)
 
 
 # ------------------------------------------------------------------------

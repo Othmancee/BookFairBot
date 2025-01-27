@@ -46,55 +46,71 @@ class HallManager:
     
     def get_section_publishers(self, hall_number: int, section: str) -> List[Dict]:
         """Get all publishers in a specific section of a hall."""
-        return [p for p in self.get_hall_publishers(hall_number) if p.get('section') == section]
+        publishers = self.get_hall_publishers(hall_number)
+        return [pub for pub in publishers if pub.get('section', '').lower() == section.lower()]
     
-    def get_publisher_by_code(self, code: str) -> Optional[Dict]:
-        """Find a publisher by their code across all halls."""
-        code = code.strip().upper()  # Normalize code format
-        for hall_publishers in self.halls.values():
-            for publisher in hall_publishers:
-                if publisher.get('code', '').upper() == code:
-                    return publisher
-        return None
+    def get_publisher_by_code(self, code: str, hall_number: int = None) -> Dict:
+        """Get a publisher by their code and optionally hall number."""
+        if hall_number is not None:
+            # Look in specific hall
+            publishers = self.get_hall_publishers(hall_number)
+            for pub in publishers:
+                if pub['code'].lower() == code.lower():
+                    return pub
+            return None
+        else:
+            # Look in all halls (legacy support)
+            for hall_publishers in self.halls.values():
+                for pub in hall_publishers:
+                    if pub['code'].lower() == code.lower():
+                        return pub
+            return None
     
-    def search_publishers(self, query: str) -> list:
-        """Search for publishers by name (Arabic/English) or code."""
+    def search_publishers(self, query: str) -> List[Dict]:
+        """Search for publishers by name or code."""
         if not query:
             return []
-            
+        
         results = []
         query = query.lower().strip()
         logger.info(f"Searching for: {query}")
         
-        for hall_num, hall_publishers in self.halls.items():
-            for publisher in hall_publishers:
+        # Check if searching for a specific hall
+        hall_match = None
+        hall_query = query.replace('قاعة ', '').replace('hall ', '')
+        if hall_query.isdigit():
+            hall_match = int(hall_query)
+        
+        # Search in all halls (or specific hall if specified)
+        for hall_number, hall_publishers in self.halls.items():
+            # Skip if searching for specific hall and this isn't it
+            if hall_match is not None and hall_number != hall_match:
+                continue
+            
+            for pub in hall_publishers:
+                matched = False
+                
                 # Check code (case-insensitive)
-                pub_code = str(publisher.get('code') or '').lower()
+                pub_code = str(pub.get('code', '')).lower()
                 if pub_code and query in pub_code:
-                    logger.info(f"Found by code: {publisher.get('nameAr')} ({pub_code})")
-                    results.append(publisher)
-                    continue
+                    logger.info(f"Found by code: {pub.get('nameAr')} ({pub_code}) in Hall {hall_number}")
+                    matched = True
                 
                 # Check Arabic name
-                name_ar = str(publisher.get('nameAr') or '').lower()
-                if name_ar and query in name_ar:
-                    logger.info(f"Found by Arabic name: {publisher.get('nameAr')}")
-                    results.append(publisher)
-                    continue
+                name_ar = str(pub.get('nameAr', '')).lower()
+                if not matched and name_ar and query in name_ar:
+                    logger.info(f"Found by Arabic name: {pub.get('nameAr')} in Hall {hall_number}")
+                    matched = True
                 
-                # Check English name if it exists
-                name_en = str(publisher.get('nameEn') or '').lower()
-                if name_en and query in name_en:
-                    logger.info(f"Found by English name: {publisher.get('nameEn')}")
-                    results.append(publisher)
-                    continue
+                # Check English name
+                name_en = str(pub.get('nameEn', '')).lower()
+                if not matched and name_en and query in name_en:
+                    logger.info(f"Found by English name: {pub.get('nameEn')} in Hall {hall_number}")
+                    matched = True
                 
-                # Check hall number
-                hall_query = query.replace('قاعة ', '').replace('hall ', '')
-                if hall_query.isdigit() and int(hall_query) == publisher.get('hall'):
-                    logger.info(f"Found by hall number: {publisher.get('nameAr')} (Hall {publisher.get('hall')})")
-                    results.append(publisher)
-                    continue
+                # Add to results if matched
+                if matched or hall_match == hall_number:
+                    results.append(pub)
         
         logger.info(f"Found {len(results)} results")
         return results
@@ -132,30 +148,25 @@ class HallManager:
         neighbors.sort(key=lambda x: x[0])
         return [pub for _, pub in neighbors[:max_neighbors]]
 
-    def get_adjacent_publishers(self, hall_number: int, section: str, publisher_code: str) -> List[Dict]:
-        """Get publishers adjacent to the given publisher in the same section."""
-        # Get all publishers in the section
+    def get_adjacent_publishers(self, hall_number: int, section: str, code: str) -> List[Dict]:
+        """Get publishers adjacent to the given publisher."""
         section_pubs = self.get_section_publishers(hall_number, section)
         
-        # Find the current publisher's position
-        current_pub = None
-        current_index = -1
+        # Find the index of the current publisher
+        current_idx = -1
         for i, pub in enumerate(section_pubs):
-            if pub.get('code') == publisher_code:
-                current_pub = pub
-                current_index = i
+            if pub['code'].lower() == code.lower():
+                current_idx = i
                 break
         
-        if current_index == -1:
+        if current_idx == -1:
             return []
         
-        # Get adjacent publishers (one before and one after)
-        adjacent = []
-        if current_index > 0:
-            adjacent.append(section_pubs[current_index - 1])
-        if current_index < len(section_pubs) - 1:
-            adjacent.append(section_pubs[current_index + 1])
+        # Get up to 2 publishers before and after the current one
+        start_idx = max(0, current_idx - 2)
+        end_idx = min(len(section_pubs), current_idx + 3)
         
+        adjacent = section_pubs[start_idx:current_idx] + section_pubs[current_idx + 1:end_idx]
         return adjacent
 
     def format_publisher_info(self, publisher: dict, include_neighbors: bool = False) -> str:
@@ -164,7 +175,7 @@ class HallManager:
         
         # Add Arabic name with icon on right
         name_ar = publisher.get('nameAr', 'بدون اسم')
-        info.append(f"*{name_ar}* 📚")
+        info.append(f"*{name_ar}* ")
         
         # Add English name if available
         if publisher.get('nameEn'):
