@@ -1194,8 +1194,7 @@ bug_report_handler = ConversationHandler(
         ],
         REPORT_EMAIL: [
             MessageHandler(filters.TEXT & ~filters.COMMAND, submit_bug_report),
-            CallbackQueryHandler(cancel_bug_report, pattern='^cancel_bug_report$'),
-            CallbackQueryHandler(start_bug_report, pattern='^report_bug$')
+            CallbackQueryHandler(cancel_bug_report, pattern='^cancel_bug_report$')
         ]
     },
     fallbacks=[
@@ -1204,7 +1203,7 @@ bug_report_handler = ConversationHandler(
     ],
     per_chat=True,     # Track states per chat
     per_user=True,     # Track states per user
-    per_message=True   # Track states per message since we use CallbackQueryHandler
+    per_message=False  # Don't track states per message since we mix handlers
 )
 
 # ------------------------------------------------------------------------
