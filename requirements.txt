@@ -10,4 +10,4 @@ Pillow==10.4.0
 APScheduler==3.11.0
 fuzzywuzzy==0.18.0
 pytz==2024.1
-python-Levenshtein==0.25.0
+python-Levenshtein-wheels==0.13.2
