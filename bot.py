@@ -1194,12 +1194,14 @@ bug_report_handler = ConversationHandler(
         ],
         REPORT_EMAIL: [
             MessageHandler(filters.TEXT & ~filters.COMMAND, submit_bug_report),
-            CallbackQueryHandler(start_bug_report, pattern='^report_bug$'),
-            CallbackQueryHandler(cancel_bug_report, pattern='^cancel_bug_report$')
-        ],
+            CallbackQueryHandler(cancel_bug_report, pattern='^cancel_bug_report$'),
+            CallbackQueryHandler(start_bug_report, pattern='^report_bug$')
+        ]
     },
-    fallbacks=[CallbackQueryHandler(cancel_bug_report, pattern='^cancel_bug_report$')],
-    per_message=False
+    fallbacks=[CommandHandler('cancel', cancel_bug_report)],
+    per_message=True,
+    per_chat=True,
+    per_user=True
 )
 
 # ------------------------------------------------------------------------
