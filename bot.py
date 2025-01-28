@@ -1198,10 +1198,13 @@ bug_report_handler = ConversationHandler(
             CallbackQueryHandler(start_bug_report, pattern='^report_bug$')
         ]
     },
-    fallbacks=[CommandHandler('cancel', cancel_bug_report)],
-    per_message=True,
-    per_chat=True,
-    per_user=True
+    fallbacks=[
+        CommandHandler('cancel', cancel_bug_report),
+        CallbackQueryHandler(cancel_bug_report, pattern='^cancel_bug_report$')
+    ],
+    per_chat=True,     # Track states per chat
+    per_user=True,     # Track states per user
+    per_message=True   # Track states per message since we use CallbackQueryHandler
 )
 
 # ------------------------------------------------------------------------
