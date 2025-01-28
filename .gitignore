@@ -16,6 +16,7 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -27,6 +28,7 @@ var/
 *.json
 !package.json
 !package-lock.json
+service-account.json
 
 # Virtual Environment
 venv/

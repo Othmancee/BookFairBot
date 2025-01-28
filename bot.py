@@ -8,7 +8,9 @@ from dotenv import load_dotenv
 from telegram import (
     Update,
     InlineKeyboardButton,
-    InlineKeyboardMarkup
+    InlineKeyboardMarkup,
+    ReplyKeyboardMarkup,
+    ReplyKeyboardRemove
 )
 from telegram.constants import ParseMode
 from telegram.ext import (
@@ -18,6 +20,7 @@ from telegram.ext import (
     CallbackQueryHandler,
     ContextTypes,
     filters,
+    ConversationHandler,
 )
 import pytz
 from halls.hall_manager import HallManager
@@ -31,6 +34,10 @@ import time as time_module  # Rename import to avoid conflict
 from pathlib import Path
 from datetime import datetime
 from functools import wraps
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+import re  # Add this at the top with other imports
 
 # Enable logging
 logging.basicConfig(
@@ -170,6 +177,9 @@ async def show_homepage(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
         [
             InlineKeyboardButton("⭐️ المفضلة", callback_data="favorites"),
             InlineKeyboardButton("📅 العروض", callback_data="events")
+        ],
+        [
+            InlineKeyboardButton("🐛 الإبلاغ عن مشكلة", callback_data="report_bug")
         ]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -588,10 +598,11 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
                 publisher = hall_manager.get_publisher_by_code(code, hall_number)
                 if publisher:
                     # Track publisher view
-                    analytics.track_publisher_view(
+                    analytics.track_publisher_interaction(
                         user_id=user_id,
                         publisher_code=code,
-                        hall_number=str(hall_number)
+                        action="view",
+                        hall_number=hall_number
                     )
                     await handle_publisher_selection(update, context, publisher, is_callback=True)
                 else:
@@ -1025,6 +1036,173 @@ async def show_favorites(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
 
 # ------------------------------------------------------------------------
+# Bug Report States
+# ------------------------------------------------------------------------
+REPORT_DESCRIPTION, REPORT_EMAIL = range(2)
+
+async def start_bug_report(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Start the bug report process."""
+    query = update.callback_query
+    await query.answer()
+    
+    keyboard = [[InlineKeyboardButton("❌ إلغاء", callback_data="cancel_bug_report")]]
+    message_text = (
+        "🐛 شكراً لمساعدتنا في تحسين البوت!\n\n"
+        "الرجاء وصف المشكلة التي واجهتك بالتفصيل. قد تحصل على كوبون خصم أو عرض خاص على بعض الإصدارات المتاحة في منصة أسفار! 🎁"
+    )
+    
+    await query.message.reply_text(
+        text=message_text,
+        reply_markup=InlineKeyboardMarkup(keyboard)
+    )
+    return REPORT_DESCRIPTION
+
+async def get_bug_description(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Store the bug description and ask for email."""
+    context.user_data['bug_description'] = update.message.text
+    
+    keyboard = [
+        [
+            InlineKeyboardButton("❌ إلغاء", callback_data="cancel_bug_report"),
+            InlineKeyboardButton("↩️ رجوع", callback_data="report_bug")
+        ]
+    ]
+    
+    message_text = (
+        "شكراً على الوصف!\n\n"
+        "الرجاء إدخال بريدك الإلكتروني للتواصل معك إذا احتجنا لمزيد من المعلومات، أو إرسال الكوبون أو العرض الخاص بك."
+    )
+    
+    await update.message.reply_text(
+        text=message_text,
+        reply_markup=InlineKeyboardMarkup(keyboard)
+    )
+    return REPORT_EMAIL
+
+# Add email validation function
+def is_valid_email(email: str) -> bool:
+    """Validate email address format."""
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return bool(re.match(pattern, email))
+
+async def submit_bug_report(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Handle the submitted email and send the bug report."""
+    email = update.message.text.strip()
+    
+    # Validate email format
+    if not is_valid_email(email):
+        keyboard = [
+            [
+                InlineKeyboardButton("❌ إلغاء", callback_data="cancel_bug_report"),
+                InlineKeyboardButton("↩️ رجوع", callback_data="report_bug")
+            ]
+        ]
+        message_text = (
+            " .عذراً، البريد الإلكتروني غير صحيح. أرجو التحقق ثم إعادة المحاولة\n\n"
+        )
+        await update.message.reply_text(
+            text=message_text,
+            reply_markup=InlineKeyboardMarkup(keyboard)
+        )
+        return REPORT_EMAIL
+    
+    description = context.user_data['bug_description']
+    user = update.effective_user
+    
+    # Prepare email content
+    msg = MIMEMultipart()
+    msg['From'] = os.getenv('EMAIL_FROM', 'bot@asfar.io')
+    msg['To'] = 'welcome@asfar.io'
+    msg['Subject'] = f'Bug Report from Book Fair Bot User {user.id}'
+    
+    body = f"""
+    Bug Report Details:
+    ------------------
+    User ID: {user.id}
+    Username: @{user.username if user.username else 'N/A'}
+    User Email: {email}
+    
+    Description:
+    {description}
+    
+    Time: {datetime.now(pytz.timezone('Africa/Cairo')).strftime('%Y-%m-%d %H:%M:%S')}
+    """
+    
+    msg.attach(MIMEText(body, 'plain'))
+    
+    # Send email
+    try:
+        with smtplib.SMTP(os.getenv('SMTP_SERVER', 'smtp.gmail.com'), 587) as server:
+            server.starttls()
+            server.login(os.getenv('EMAIL_USER'), os.getenv('EMAIL_APP_PASSWORD'))
+            server.send_message(msg)
+        
+        # Track successful bug report
+        analytics.track_event(
+            name="bug_report",
+            user_id=str(user.id),
+            params={
+                "has_email": bool(email),
+                "status": "success"
+            }
+        )
+        
+        keyboard = [[InlineKeyboardButton("📋 القائمة الرئيسية", callback_data="start")]]
+        
+        await update.message.reply_text(
+            "✅ تم إرسال البلاغ بنجاح!\n\n"
+            "شكراً على مساعدتنا في تحسين خدمة البوت. سنراجع البلاغ قريباً.\n"
+            "إذا كان البلاغ صحيحاً، سنرسل لك كود خصم خاص على منتجات أسفار! 🎁",
+            reply_markup=InlineKeyboardMarkup(keyboard)
+        )
+        
+    except Exception as e:
+        logger.error(f"Failed to send bug report email: {e}")
+        keyboard = [
+            [
+                InlineKeyboardButton("🔄 إعادة المحاولة", callback_data="report_bug"),
+                InlineKeyboardButton("📋 القائمة الرئيسية", callback_data="start")
+            ]
+        ]
+        await update.message.reply_text(
+            "عذراً، حدث خطأ أثناء إرسال البلاغ. الرجاء المحاولة مرة أخرى لاحقاً.",
+            reply_markup=InlineKeyboardMarkup(keyboard)
+        )
+    
+    return ConversationHandler.END
+
+async def cancel_bug_report(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Cancel the bug report conversation."""
+    query = update.callback_query
+    await query.answer()
+    
+    keyboard = [[InlineKeyboardButton("📋 القائمة الرئيسية", callback_data="start")]]
+    
+    await query.message.reply_text(
+        "تم إلغاء البلاغ.",
+        reply_markup=InlineKeyboardMarkup(keyboard)
+    )
+    return ConversationHandler.END
+
+# Bug report conversation handler
+bug_report_handler = ConversationHandler(
+    entry_points=[CallbackQueryHandler(start_bug_report, pattern='^report_bug$')],
+    states={
+        REPORT_DESCRIPTION: [
+            MessageHandler(filters.TEXT & ~filters.COMMAND, get_bug_description),
+            CallbackQueryHandler(cancel_bug_report, pattern='^cancel_bug_report$')
+        ],
+        REPORT_EMAIL: [
+            MessageHandler(filters.TEXT & ~filters.COMMAND, submit_bug_report),
+            CallbackQueryHandler(start_bug_report, pattern='^report_bug$'),
+            CallbackQueryHandler(cancel_bug_report, pattern='^cancel_bug_report$')
+        ],
+    },
+    fallbacks=[CallbackQueryHandler(cancel_bug_report, pattern='^cancel_bug_report$')],
+    per_message=False
+)
+
+# ------------------------------------------------------------------------
 # 5. Main entry point: create Application, add handlers, run bot
 # ------------------------------------------------------------------------
 def main() -> None:
@@ -1035,6 +1213,9 @@ def main() -> None:
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help_command))
     application.add_handler(CommandHandler("search", search_command))
+
+    # Bug Report Handler (must be before general callback handler)
+    application.add_handler(bug_report_handler)
 
     # Message Handler (for user text)
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
